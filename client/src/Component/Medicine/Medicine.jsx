@@ -42,6 +42,7 @@ function Medicine() {
         justifyContent={"space-evenly"}
         mt="3"
         shadow={"md"}
+        overflowX={{ base: "auto", lg: "none" }}
       >
         {arr?.map((el, i) => {
           return (
@@ -58,6 +59,7 @@ function Medicine() {
               onClick={() => handleClick(el, i)}
               fontWeight="500"
               borderRadius={"2px"}
+              p={{ base: "18px", lg: "0" }}
             >
               {el}
             </Flex>
@@ -70,14 +72,18 @@ function Medicine() {
         color="blackAlpha.700"
         fontSize={"12px"}
       >
-        Showing 1-30 of 30186 results
+        Showing 1-30 of 819 results
       </Text>
       <Grid
         fontFamily={"poppins"}
-        gridTemplateColumns={"repeat(3,1fr)"}
+        gridTemplateColumns={{
+          base: "repeat(1,1fr)",
+          md: "repeat(2,1fr)",
+          lg: "repeat(3,1fr)",
+        }}
         w="full"
         gap="3"
-        rowGap={6}
+        rowGap={[3, 3, 5, 6]}
       >
         {productData?.map((el, i) => {
           return <MedicineComponent {...el} key={el._id} />;
