@@ -1,7 +1,8 @@
 import { Box, Flex, Grid, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
+import { IProduct } from "../../@types/IProduct";
 
-function MedicineComponent({
+export const MedicineComponent: React.FC<IProduct> = ({
   image,
   name,
   company,
@@ -9,7 +10,7 @@ function MedicineComponent({
   price1,
   tablet,
   ratings,
-}) {
+}) => {
   return (
     <Grid
       gridTemplateColumns={".5fr 2fr"}
@@ -17,6 +18,7 @@ function MedicineComponent({
       p="2"
       gap="2"
       shadow={"md"}
+      fontFamily="poppins"
     >
       <Box h="full">
         <Image src={image} />
@@ -79,6 +81,6 @@ function MedicineComponent({
       </Flex>
     </Grid>
   );
-}
+};
 
 export default MedicineComponent;

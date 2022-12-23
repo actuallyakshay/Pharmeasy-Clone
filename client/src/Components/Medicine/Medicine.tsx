@@ -1,36 +1,43 @@
 import { Box, Flex, Grid, HStack, Text } from "@chakra-ui/react";
-import React, { ReactNode, useState } from "react";
-import { IAlpha, ITemp } from "../../@types/IMedicine";
+import React, { Dispatch, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { IProduct } from "../../@types/IProduct";
+import { getProductData } from "../../Redux/Product/product.action";
+import { AppState } from "../../Redux/Store";
+import MedicineComponent from "./MedicineComponent";
 
 const str: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const arr: Array<string> = str.split("");
 
 export const Medicine: React.FC = () => {
-  const [temp, setTemp] = useState<ITemp>({ temp: 0 });
-  const [alpha, setAlpha] = useState<IAlpha>({ alpha: "A" });
-  // const dispatch = useDispatch();
-  // const productData = useSelector((state) => state?.product?.productData);
+  const [temp, setTemp] = useState<number>(0);
+  const [alpha, setAlpha] = useState<string>("A");
+  const dispatch: Dispatch<any> = useDispatch();
+  const productData: IProduct[] | undefined = useSelector(
+    (state: AppState) => state?.productReducer?.productData
+  );
 
-  // useEffect(() => {
-  //   // dispatch(getProductData("medicine", alpha));
-  // }, [alpha.alpha]);
+  useEffect(() => {
+    dispatch(getProductData("medicine"));
+  }, [alpha]);
 
   const handleClick = (el: string, i: number) => {
-    setTemp({ temp: i });
-    setAlpha({ alpha: el });
+    setTemp(i);
+    setAlpha(el);
   };
 
   return (
     <>
       <Box w="full" p="2" border="1px solid black">
-        {/* <Text
+        <Text
           fontWeight={"400"}
           letterSpacing={".4px"}
           color="blackAlpha.700"
           fontSize={"20px"}
         >
           Medicine Index starting with - {alpha}
-        </Text> */}
+        </Text>
       </Box>
       <HStack
         py="3"
@@ -39,6 +46,7 @@ export const Medicine: React.FC = () => {
         mt="3"
         shadow={"md"}
         // overflowX={{ base: "auto", lg: "none" }}
+        // style={myStyle}
       >
         {arr?.map((el: string, i: number) => {
           return (
@@ -49,8 +57,8 @@ export const Medicine: React.FC = () => {
               w="35px"
               h="35px"
               border="2px solid #10847e"
-              bg={temp.temp == i ? "#10847e" : "white"}
-              color={temp.temp == i ? "white" : "#10847e"}
+              bg={temp == i ? "#10847e" : "white"}
+              color={temp == i ? "white" : "#10847e"}
               _hover={{ cursor: "pointer" }}
               onClick={() => handleClick(el, i)}
               fontWeight="500"
@@ -81,9 +89,9 @@ export const Medicine: React.FC = () => {
         gap="3"
         rowGap={[3, 3, 5, 6]}
       >
-        {/* {productData?.map((el, i) => {
+        {productData?.map((el: IProduct, i: number) => {
           return <MedicineComponent {...el} key={el._id} />;
-        })} */}
+        })}
       </Grid>
     </>
   );

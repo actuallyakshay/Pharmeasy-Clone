@@ -11,6 +11,7 @@ import { connect } from "./config/db";
 import { errorhandler } from "./middleware/errorhandles";
 import usersRouter from "./features/Auth/user.route";
 import productRouter from "./features/product/product.route";
+import cors from "cors";
 
 config();
 
@@ -20,6 +21,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(errorhandler);
+app.use(cors());
 app.use("/user", usersRouter);
 app.use("/product", productRouter);
 

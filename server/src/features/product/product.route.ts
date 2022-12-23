@@ -18,8 +18,8 @@ productRouter.get(
   "",
   async (req: Request, res: Response, next: NextFunction) => {
     const {
-      page,
-      limit,
+      page = 1,
+      limit = 30,
       category,
       input,
       priceSort,
