@@ -19,7 +19,7 @@ export const Medicine: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(getProductData("medicine"));
+    dispatch(getProductData("medicine", alpha));
   }, [alpha]);
 
   const handleClick = (el: string, i: number) => {

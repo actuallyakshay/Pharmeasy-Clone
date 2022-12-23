@@ -9,9 +9,12 @@ export interface IProductAction {
 }
 
 export const getProductData =
-  (category: string) => (dispatch: Dispatch<IProductAction>) => {
+  (category: string, firstLetter: string) =>
+  (dispatch: Dispatch<IProductAction>) => {
     axios
-      .get(`${process.env.REACT_APP_URL}/product?category=${category}`)
+      .get(
+        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}`
+      )
       .then((res) => {
         dispatch({
           type: ProductTypes.GET_PRODUCT_SUCCESS,
