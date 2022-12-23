@@ -3,7 +3,7 @@ import Footer from "./organisms/Footer";
 import Navbar from "./organisms/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
 
-export const App = () => (
+export const App: React.FC = () => (
   <ChakraProvider>
     <Navbar />
     <AllRoutes />

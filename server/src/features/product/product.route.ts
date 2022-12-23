@@ -12,23 +12,32 @@ type IPage = {
   offSort: string;
   priceArr: string;
   offArr: string;
+  firstLetter: string;
 };
 
 productRouter.get(
   "",
   async (req: Request, res: Response, next: NextFunction) => {
     const {
-      page,
-      limit,
+      page = 1,
+      limit = 30,
       category,
       input,
       priceSort,
       offSort,
       priceArr,
       offArr,
+      firstLetter,
     } = req.query as IPage;
     try {
-      if (category && offArr) {
+      if (category && firstLetter) {
+        const temp = firstLetter;
+        let products: IProduct[] = await Product.find({
+          category: category,
+          name: { $regex: "^" + temp, $options: "i" },
+        }).limit(Number(limit));
+        return res.send(products);
+      } else if (category && offArr) {
         let [min, max]: Array<number> = priceArr.split(",").map(Number);
 
         let products: IProduct[] = await Product.find(
