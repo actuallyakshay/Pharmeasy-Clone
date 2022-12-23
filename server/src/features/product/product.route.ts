@@ -85,11 +85,11 @@ productRouter.get(
             .limit(Number(limit));
           return res.status(200).send(products);
         }
-      } else if (category && input) {
+      } else if (input) {
         let temp: RegExp = new RegExp(input, "i");
         let product: IProduct[] = await Product.find({ category, title: temp })
-          .skip((Number(page) - 1) * Number(limit))
-          .limit(Number(limit));
+          .limit(Number(limit))
+          .skip((Number(page) - 1) * Number(limit));
         return res.status(200).send(product);
       } else if (category) {
         let product: IProduct[] = await Product.find({ category })
