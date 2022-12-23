@@ -22,3 +22,4 @@ export interface IProductReducer {
   productError?: boolean;
   productData?: IProduct[];
 }
+
