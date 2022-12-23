@@ -51,6 +51,7 @@ const category = () => {
         {data.map(({ src, title, discount }) => {
           return (
             <Flex
+              key={src}
               flexDirection="column"
               _hover={{
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",

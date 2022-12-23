@@ -1,14 +1,14 @@
 import { Box } from "@chakra-ui/react";
-import SearchBar from "../Component/Navbar/SearchBar";
-import Category from "../Component/HomePage/Category";
-import OffersTags from "../Component/HomePage/OffersTags";
-import LabTests from "../Component/HomePage/LabTests";
-import BankOffers from "../Component/HomePage/BankOffers";
-import ShopByCategory from "../Component/HomePage/ShopByCategory";
-import NewLaunches from "../Component/HomePage/NewLaunches";
-import Trending from "../Component/HomePage/Trending";
-import ShopByConcern from "../Component/HomePage/ShopByConcern";
-import InTheSoptlight from "../Component/HomePage/InTheSoptlight";
+import SearchBar from "../Components/Navbar/SearchBar";
+import Category from "../Components/HomePage/Category";
+import OffersTags from "../Components/HomePage/OffersTags";
+import LabTests from "../Components/HomePage/LabTests";
+import BankOffers from "../Components/HomePage/BankOffers";
+import ShopByCategory from "../Components/HomePage/ShopByCategory";
+import NewLaunches from "../Components/HomePage/NewLaunches";
+import Trending from "../Components/HomePage/Trending";
+import ShopByConcern from "../Components/HomePage/ShopByConcern";
+import InTheSoptlight from "../Components/HomePage/InTheSoptlight";
 
 const LandingPage = () => {
   return (

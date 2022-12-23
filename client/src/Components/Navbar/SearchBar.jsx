@@ -11,7 +11,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { CgNotes } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+// import { HiOutlineArrowSmRight } from "react-icons/hi";
 import { useState } from "react";
 
 const SearchBar = () => {
@@ -57,11 +57,11 @@ const SearchBar = () => {
                 upload now
               </Text>
               <Box>
-                <MdOutlineKeyboardArrowRight
+                {/* <HiOutlineArrowSmRight
                   fontSize="20px"
                   fontWeight="600"
                   color="#89c2bf"
-                />
+                /> */}
               </Box>
             </Flex>
           </Flex>

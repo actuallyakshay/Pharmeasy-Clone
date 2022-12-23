@@ -1,7 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Items from "../../molecules/Items";
-import "../../App.css";
 
 const data = [
   { link: "", url: "", title: "Medicine" },
