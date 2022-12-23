@@ -8,6 +8,7 @@ import ProductComponent from "./ProductComponent";
 import Sidebar from "./Sidebar";
 import { AppState } from "../../Redux/Store";
 import Pegination from "./Pegination";
+import Filters from "./Filters/Filters";
 
 export const Healthcare: React.FC = () => {
   const [temp, setTemp] = useState<number>(0);
@@ -29,10 +30,22 @@ export const Healthcare: React.FC = () => {
 
   useEffect(() => {
     dispatch(getProductData(cat, "", page));
-  }, [cat, page]);
+  }, [cat, page, dispatch]);
+
+  const handlePriceSort = (sort: string): void => {
+    dispatch(getProductData(cat, "", page, sort));
+  };
+
+  const handleDiscountSort = (offSort: string): void => {
+    dispatch(getProductData(cat, "", page, "", offSort));
+  };
 
   return (
     <>
+      <Filters
+        handleDiscountSort={handleDiscountSort}
+        handlePriceSort={handlePriceSort}
+      />
       <Grid
         position={"relative"}
         gridTemplateColumns={{

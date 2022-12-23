@@ -24,10 +24,6 @@ interface ITemp {
 const Sidebar: React.FC<ITemp> = ({ temp, handleClick }) => {
   return (
     <VStack top="0%" position={"sticky"} align="start" h="100vh">
-      <Heading size="lg" fontWeight={"500"} color="blackAlpha.700">
-        Filter
-      </Heading>
-      <br />
       <Heading size="sm" fontWeight={"500"} color="blackAlpha.700">
         Category
       </Heading>
