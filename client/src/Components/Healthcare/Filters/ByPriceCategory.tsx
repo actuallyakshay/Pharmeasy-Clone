@@ -2,20 +2,21 @@ import { VStack } from "@chakra-ui/layout";
 import React from "react";
 import { Radio, RadioGroup, Wrap, WrapItem } from "@chakra-ui/react";
 
-const ByPriceCategory: React.FC = () => {
-  const hanldeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
+interface IProps {
+  hanldePriceCategory: Function;
+}
 
+const ByPriceCategory: React.FC<IProps> = ({ hanldePriceCategory }) => {
   return (
-    // <VStack border={"1px solid red"}>
     <RadioGroup defaultValue="6">
       <Wrap spacing="50px">
         <WrapItem>
           {arr?.map((el: string, i: number) => {
             return (
               <Radio
-                onChange={hanldeChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  hanldePriceCategory(e)
+                }
                 key={i + el}
                 colorScheme="teal"
                 value={el}
@@ -24,11 +25,9 @@ const ByPriceCategory: React.FC = () => {
               </Radio>
             );
           })}
-          {/* </RadioGroup> */}
         </WrapItem>
       </Wrap>
     </RadioGroup>
-    // </VStack>
   );
 };
 

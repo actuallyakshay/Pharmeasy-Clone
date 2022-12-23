@@ -38,24 +38,24 @@ productRouter.get(
         }).limit(Number(limit));
         return res.send(products);
       } else if (category && offArr) {
-        let [min, max]: Array<number> = priceArr.split(",").map(Number);
+        let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
 
-        let products: IProduct[] = await Product.find(
-          { category },
-          {
-            $and: [{ $gte: { off: min } }, { $lt: { off: max } }],
-          }
-        );
+        let products: IProduct[] = await Product.find({
+          category: category,
+          $and: [{ off: { $gte: min } }, { off: { $lt: max } }],
+        })
+          .sort({ off: 1 })
+          .limit(Number(limit));
         return res.status(200).send(products);
       } else if (category && priceArr) {
-        let [min, max]: Array<number> = priceArr.split(",").map(Number);
+        let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
 
-        let products: IProduct[] = await Product.find(
-          { category },
-          {
-            $and: [{ $gte: { price1: min } }, { $lt: { price1: max } }],
-          }
-        );
+        let products: IProduct[] = await Product.find({
+          category: category,
+          $and: [{ price1: { $gte: min } }, { price1: { $lt: max } }],
+        })
+          .sort({ price1: 1 })
+          .limit(Number(limit));
         return res.status(200).send(products);
       } else if (category && priceSort) {
         if (priceSort === "asc") {
