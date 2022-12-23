@@ -1,5 +1,5 @@
 import { Grid } from "@chakra-ui/layout";
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { ChangeEvent, Dispatch, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { IProduct } from "../../@types/IProduct";
@@ -40,11 +40,16 @@ export const Healthcare: React.FC = () => {
     dispatch(getProductData(cat, "", page, "", offSort));
   };
 
+  const hanldePriceCategory = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(getProductData(cat, "", page, "", "", e.target.value));
+  };
+
   return (
     <>
       <Filters
         handleDiscountSort={handleDiscountSort}
         handlePriceSort={handlePriceSort}
+        hanldePriceCategory={hanldePriceCategory}
       />
       <Grid
         position={"relative"}

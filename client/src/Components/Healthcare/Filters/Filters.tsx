@@ -7,9 +7,14 @@ import ByPriceCategory from "./ByPriceCategory";
 interface IProps {
   handlePriceSort: Function;
   handleDiscountSort: Function;
+  hanldePriceCategory: Function;
 }
 
-const Filters: React.FC<IProps> = ({ handlePriceSort, handleDiscountSort }) => {
+const Filters: React.FC<IProps> = ({
+  hanldePriceCategory,
+  handlePriceSort,
+  handleDiscountSort,
+}) => {
   return (
     <HStack
       border="1px solid green"
@@ -21,7 +26,7 @@ const Filters: React.FC<IProps> = ({ handlePriceSort, handleDiscountSort }) => {
         Filter :
       </Heading>
       <ByPrice handlePriceSort={handlePriceSort} />
-      <ByPriceCategory />
+      <ByPriceCategory hanldePriceCategory={hanldePriceCategory} />
       <ByDiscount handleDiscountSort={handleDiscountSort} />
     </HStack>
   );

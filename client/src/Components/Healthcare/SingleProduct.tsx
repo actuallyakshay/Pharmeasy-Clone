@@ -77,13 +77,13 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
           fontWeight={"semibold"}
         >
           <Text>MRP</Text>
-          <Text as="del">₹{data.price1}.00</Text>
+          <Text as="del">₹{data.price2}.00</Text>
         </HStack>
         <Box className="off">{data.off}% Off</Box>
       </HStack>
       <Text px="5" fontWeight={"500"} color="teal" letterSpacing={".5px"}>
         {" "}
-        ₹{data.price2}.00
+        ₹{data.price1}.00
       </Text>
     </VStack>
   );
