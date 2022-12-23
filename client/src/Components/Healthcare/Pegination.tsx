@@ -9,7 +9,7 @@ interface IProps {
 
 const Pegination: React.FC<IProps> = ({ page, handlePage }) => {
   return (
-    <HStack justifyContent={"center"} w="100%" m="auto" border="1px solid red">
+    <HStack justifyContent={"center"} w="100%" m="auto">
       <Button
         disabled={page === 1 ? true : false}
         borderRadius={"none"}
