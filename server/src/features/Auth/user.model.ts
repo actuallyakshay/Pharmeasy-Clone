@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 
-enum Role {
+export enum Role {
   Admin = "Admin",
   HR = "HR",
   Guest = "Guest",
@@ -8,7 +8,7 @@ enum Role {
   Doctor = "Doctor",
 }
 
-enum Gender {
+export enum Gender {
   Male = "Male",
   Female = "Female",
   Others = "Others",
@@ -20,7 +20,7 @@ export interface IUser extends Document {
   pinCode: number;
   password: string;
   role: Role;
-  address: Array<String>;
+  address: Array<string>;
   mobile: number;
   age: number;
   gender: Gender;

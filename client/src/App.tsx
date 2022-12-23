@@ -1,11 +1,7 @@
+import { ChakraProvider, Box } from "@chakra-ui/react";
 
-
-function App() {
-  return (
-    <div >
-      <h1>Akshay</h1>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+  <ChakraProvider>
+    <Box>hello</Box>
+  </ChakraProvider>
+);
