@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/slick-carousel": "^1.6.37"
+  }
+}
