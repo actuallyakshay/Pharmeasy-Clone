@@ -3,8 +3,9 @@ import { IoLogoInstagram } from "react-icons/io";
 import { FaFacebook } from "react-icons/fa";
 import { GrYoutube } from "react-icons/gr";
 import { FaTwitter } from "react-icons/fa";
+import React from "react";
 
-const SocialIoncs = () => {
+const SocialIoncs: React.FC = () => {
   return (
     <Grid gridTemplateColumns="repeat(4, 1fr)">
       <IoLogoInstagram fontSize="25px" />

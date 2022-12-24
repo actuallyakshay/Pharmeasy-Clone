@@ -2,7 +2,11 @@ import React from "react";
 
 import { Text } from "@chakra-ui/react";
 
-const NavbarTitle = ({ title }) => {
+interface IProps {
+  title: string;
+}
+
+const NavbarTitle: React.FC<IProps> = ({ title }) => {
   return (
     <Text
       fontFamily="Poppins"

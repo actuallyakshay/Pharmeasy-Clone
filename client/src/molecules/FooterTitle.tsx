@@ -1,6 +1,12 @@
 import { Text } from "@chakra-ui/react";
 
-const FooterTitle = ({ title }) => {
+import React from "react";
+
+interface IProps {
+  title: string;
+}
+
+const FooterTitle: React.FC<IProps> = ({ title }) => {
   return (
     <Text
       fontSize="14px"
