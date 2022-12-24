@@ -13,7 +13,7 @@ const getProduct =
     console.log("Input", input);
     dispatch({ type: SearchProductTypes.SEARCH_REQUEST });
     axios
-      .get(`http://localhost:8080/product?input=${input}`)
+      .get(`http://localhost:8080/product?input=${input}&limit=${30}`)
       .then((res) => {
         dispatch({
           type: SearchProductTypes.SEARCH_SUCCESS,

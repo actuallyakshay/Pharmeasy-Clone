@@ -9,8 +9,19 @@ interface IProps {
 const Product: React.FC<IProps> = ({ data }) => {
   return (
     <Flex>
-      <Box>
-        <Text color="" fontSize="" fontFamily="" fontWeight="">
+      <Box
+        _hover={{ background: "#eef4ff" }}
+        w="100%"
+        px="1rem"
+        py=".8rem"
+        borderRadius={"10px"}
+      >
+        <Text
+          color="#30363c"
+          fontSize="14px"
+          fontFamily="poppins"
+          fontWeight="400"
+        >
           {data?.name}
         </Text>
       </Box>

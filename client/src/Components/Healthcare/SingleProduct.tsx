@@ -31,7 +31,7 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
         transition="transform .3s"
         top="2%"
         position={"absolute"}
-        zIndex="100"
+        zIndex="20"
       >
         <BsHeart size="30px" />
       </Box>

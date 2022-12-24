@@ -1,7 +1,14 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import {
   Box,
   Flex,
+  Text,
   Input,
   Button,
   InputGroup,
@@ -19,7 +26,8 @@ import Product from "./Product";
 
 const SearchBar: React.FC = () => {
   const [input, setInput] = useState<string>("");
-  console.log(input)
+  const previousValue = useRef<string | null>(null);
+  console.log(input);
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
@@ -30,12 +38,14 @@ const SearchBar: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {
+    previousValue.current = input;
+  }, [input]);
+
+  useEffect(() => {
     if (input.length > 0) {
       dispatch(getProduct(input));
     }
   }, [input]);
-
-  console.log(product);
 
   return (
     <Box pt="2.8rem" w="auto">
@@ -89,9 +99,23 @@ const SearchBar: React.FC = () => {
               w="100%"
               borderRadius="30px"
               boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
-              px={{ lg: ".4rem" }}
               zIndex={100}
+              p="1rem"
             >
+              <Flex bg="#eef4ff" px="1rem" align={"center"} mb="1rem">
+                <Text
+                  color="#4f585e"
+                  fontSize="12px"
+                  fontWeight="400"
+                  fontFamily="poppins"
+                  py=".5rem"
+                  borderRadius="10px"
+                >
+                  {`Recently Searched : ${
+                    previousValue !== null && previousValue.current
+                  }`}
+                </Text>
+              </Flex>
               {product?.map((item: IProduct, index: number) => {
                 return <Product key={index} data={item} />;
               })}

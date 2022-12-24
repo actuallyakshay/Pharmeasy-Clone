@@ -7,6 +7,7 @@ import NavbarBorderBottom from "../molecules/NavbarBorderBottom";
 import NavbarItems from "../Components/Navbar/NavbarItems";
 import React, { useState } from "react";
 import SearchBar from "../Components/Navbar/SearchBar";
+import Login from "../Components/Login/Login";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -27,7 +28,7 @@ const Navbar = () => {
       bg="white"
       position={"sticky"}
       w="100%"
-      zIndex={2000}
+      zIndex={30}
       top="0%"
     >
       <Flex
@@ -97,7 +98,8 @@ const Navbar = () => {
           )} */}
           <Flex align="center" cursor="pointer">
             <BsPerson fontWeight="600" fontSize="21px" />
-            <NavbarTitle title="Hello, Log in" />
+            {/* <NavbarTitle title="Hello, Log in" /> */}
+            <Login />
           </Flex>
           <Flex align="center" cursor="pointer">
             <Image
