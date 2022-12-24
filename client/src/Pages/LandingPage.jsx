@@ -9,6 +9,7 @@ import NewLaunches from "../Components/HomePage/NewLaunches";
 import Trending from "../Components/HomePage/Trending";
 import ShopByConcern from "../Components/HomePage/ShopByConcern";
 import InTheSoptlight from "../Components/HomePage/InTheSoptlight";
+import WhyChooseUs from "../Components/HomePage/WhyChooseUs";
 
 const LandingPage = () => {
   return (
@@ -28,6 +29,7 @@ const LandingPage = () => {
         <Trending />
         <ShopByConcern />
         <InTheSoptlight />
+        <WhyChooseUs />
       </Box>
     </Box>
   );

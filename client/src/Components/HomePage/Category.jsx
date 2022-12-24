@@ -47,7 +47,15 @@ const data = [
 const category = () => {
   return (
     <Box w="93%" m="auto" mt="3rem">
-      <Grid gridTemplateColumns="repeat(8, 1fr)" columnGap="2rem">
+      <Grid
+        gridTemplateColumns={{
+          base: "1fr 1fr",
+          md: "repeat(3, 1fr)",
+          lg: "repeat(8, 1fr)",
+        }}
+        columnGap="2rem"
+        rowGap={{ base: "2rem", lg: "unset" }}
+      >
         {data.map(({ src, title, discount }) => {
           return (
             <Flex
@@ -59,7 +67,7 @@ const category = () => {
               }}
             >
               <Box mx="1rem" borderBottom=".1px solid #d1d3d5">
-                <Image src={src} alt="" w="" h="" />
+                <Image src={src} alt="" />
               </Box>
               <Box mt="1rem">
                 <Title title={title} center="center" color="#30363c" />

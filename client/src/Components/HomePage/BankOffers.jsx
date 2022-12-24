@@ -13,7 +13,7 @@ const data = [
 
 const BankOffers = () => {
   return (
-    <Box w="93%" m="auto" mt="3rem">
+    <Box w="93%" m="auto" mt={{ base: "5rem", md: "", lg: "3rem" }}>
       <Box mb="2rem">
         <ProductHeading heading="Payment Offers" />
       </Box>

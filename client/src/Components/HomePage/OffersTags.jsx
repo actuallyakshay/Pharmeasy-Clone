@@ -2,15 +2,23 @@ import { Box, Grid, Flex, Text, Image } from "@chakra-ui/react";
 
 const OffersTags = () => {
   return (
-    <Box w="93%" m="auto" mt="3rem">
-      <Grid gridTemplateColumns="1fr 1fr .5fr" columnGap="1.8rem">
+    <Box
+      w={{ base: "95%", md: "96%", lg: "93%" }}
+      m="auto"
+      mt="3rem"
+      display={{ base: "none", lg: "block" }}
+    >
+      <Grid
+        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr .5fr" }}
+        columnGap={{ lg: "1.8rem" }}
+      >
         <Box>
           <Image
             src="https://cdn01.pharmeasy.in/dam/banner/banner/836fef100bc-YAYY550.jpg"
             alt=""
             borderRadius="12px"
-            w="auto"
-            h="auto"
+            w={{ base: "100%", md: "100%", lg: "auto" }}
+            h={{ base: "100%", md: "100%", lg: "auto" }}
           />
         </Box>
         <Box>
@@ -18,8 +26,8 @@ const OffersTags = () => {
             src="https://cdn01.pharmeasy.in/dam/banner/banner/760565c68b5-VIBES27.jpg"
             alt=""
             borderRadius="12px"
-            w="auto"
-            h="auto"
+            w={{ base: "100%", md: "100%", lg: "auto" }}
+            h={{ base: "100%", md: "100%", lg: "auto" }}
           />
         </Box>
       </Grid>
@@ -29,4 +37,3 @@ const OffersTags = () => {
 };
 
 export default OffersTags;
-  

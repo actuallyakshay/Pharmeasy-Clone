@@ -1,17 +1,38 @@
 import { Box, Flex, Image, Text, Button } from "@chakra-ui/react";
-// import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-// import { CiMobile2 } from "react-icons/ci";
 import { BsPerson } from "react-icons/bs";
-// import { BsCart } from "react-icons/bs";
+import { IoMdCart } from "react-icons/io";
 import { Link } from "react-router-dom";
 import NavbarTitle from "../molecules/NavbarTitle";
 import NavbarBorderBottom from "../molecules/NavbarBorderBottom";
 import NavbarItems from "../Components/Navbar/NavbarItems";
+import { useState } from "react";
+import SearchBar from "../Components/Navbar/SearchBar";
 
 const Navbar = () => {
+  const [navbar, setNavbar] = useState(false);
+
+  const changeNavbarBg = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 1) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeNavbarBg);
+
   return (
-    <Box bg="white">
-      <Flex w="90%" m="auto" mt=".7rem" px=".5rem" align="center">
+    <Box bg="white" position={navbar ? "fixed" : null} w="100%" zIndex={100}>
+      <Flex
+        w="90%"
+        m="auto"
+        mt=".7rem"
+        px=".5rem"
+        // align="center"
+        justifyContent="space-between"
+        alignContent="stretch"
+      >
         <Flex>
           <Box>
             <Link to="/">
@@ -52,18 +73,23 @@ const Navbar = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex ml="auto" align="center" justify="space-between" w="38%">
-          <Flex align="center">
-            <Button
-              cursor="pointer"
-              bg="rgb(238, 244, 255)"
-              // leftIcon={
-              //   <CiMobile2 fontWeight="400" fontSize="25px" color="black" />
-              // }
-            >
-              Download App
-            </Button>
-          </Flex>
+        {/* <Flex flex="2">
+          <SearchBar />
+        </Flex> */}
+        <Flex align="center" gap="2rem">
+          {!navbar >= 1 && (
+            <Flex align="center">
+              <Button
+                cursor="pointer"
+                bg="rgb(238, 244, 255)"
+                // leftIcon={
+                //   <FaMobileAlt fontWeight="400" fontSize="25px" color="black" />
+                // }
+              >
+                Download App
+              </Button>
+            </Flex>
+          )}
           <Flex align="center" cursor="pointer">
             <BsPerson fontWeight="600" fontSize="21px" />
             <NavbarTitle title="Hello, Log in" />
@@ -78,7 +104,7 @@ const Navbar = () => {
             <NavbarTitle title="Offers" />
           </Flex>
           <Flex align="center" cursor="pointer">
-            {/* <BsCart fontWeight="600" fontSize="19px" /> */}
+            <IoMdCart fontWeight="600" fontSize="19px" />
             <NavbarTitle title="Cart" />
           </Flex>
         </Flex>

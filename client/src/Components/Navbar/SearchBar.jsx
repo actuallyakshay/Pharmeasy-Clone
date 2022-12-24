@@ -8,64 +8,15 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { CgNotes } from "react-icons/cg";
+
 import { FiSearch } from "react-icons/fi";
-// import { HiOutlineArrowSmRight } from "react-icons/hi";
 import { useState } from "react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
   return (
-    <Box pt="2.8rem">
+    <Box pt="2.8rem" w="auto">
       <Flex direction="column" w="60%" m="auto">
-        <Flex>
-          <Text
-            fontFamily="poppins"
-            fontSize="20px"
-            fontWeight="500"
-            color="rgb(16 132 126)"
-          >
-            What are you looking for?
-          </Text>
-          <Flex
-            ml="auto"
-            pt="1rem"
-            align="center"
-            w="37%"
-            justify="space-between"
-          >
-            <Box>
-              <CgNotes fontSize="18px" />
-            </Box>
-            <Text
-              fontFamily="poppins"
-              fontSize="14px"
-              fontWeight="500"
-              color="#30363c"
-            >
-              Order with prescription.
-            </Text>
-            <Flex align="center">
-              <Text
-                fontFamily="poppins"
-                fontSize="14px"
-                fontWeight="500"
-                color="#89c2bf"
-                textTransform="uppercase"
-              >
-                upload now
-              </Text>
-              <Box>
-                {/* <HiOutlineArrowSmRight
-                  fontSize="20px"
-                  fontWeight="600"
-                  color="#89c2bf"
-                /> */}
-              </Box>
-            </Flex>
-          </Flex>
-        </Flex>
         <Flex
           mt="1.3rem"
           borderRadius="30px"
@@ -113,7 +64,6 @@ const SearchBar = () => {
               w="100%"
               borderRadius="30px"
               boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
-              // border="1px solid #d7dfe5"
               px={{ lg: ".4rem" }}
               zIndex={100}
             ></Box>
