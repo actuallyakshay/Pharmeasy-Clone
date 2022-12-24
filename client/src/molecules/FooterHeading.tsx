@@ -1,6 +1,10 @@
 import { Text } from "@chakra-ui/react";
+import React from "react";
+interface IProps {
+  heading: string;
+}
 
-const FooterHeading = ({ heading }) => {
+const FooterHeading: React.FC<IProps> = ({ heading }) => {
   return (
     <Text
       fontSize="16px"

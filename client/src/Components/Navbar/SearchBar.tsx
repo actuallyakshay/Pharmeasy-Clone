@@ -23,6 +23,7 @@ const SearchBar: React.FC = () => {
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
+
   const product: IProduct[] | undefined = useSelector(
     (store: AppState) => store?.SearchReducer?.productData
   );
