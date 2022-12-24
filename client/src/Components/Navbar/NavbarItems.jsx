@@ -20,7 +20,7 @@ const NavbarItems = () => {
       <Flex w="54%" m="auto" justify="space-between" mt=".5rem">
         {data.map(({ title, link }) => {
           return (
-            <Link to={link}>
+            <Link key={title} to={link}>
               <Items items={title} />
             </Link>
           );

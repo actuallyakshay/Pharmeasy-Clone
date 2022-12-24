@@ -41,6 +41,7 @@ const ShopByConcern = () => {
       title: "Lifestyle Disorders",
     },
   ];
+
   return (
     <Box w="93%" m="auto" mt="3rem">
       <ProductHeading heading="Shop by Concern" />
@@ -57,7 +58,7 @@ const ShopByConcern = () => {
       <Grid templateColumns="repeat(auto-fill, 120px)" gap="3rem">
         {data.map(({ src, link, url, title }) => {
           return (
-            <Box>
+            <Box key={src}>
               <Box>
                 <Image src={src} alt="" w="auto" h="auto" />
               </Box>
