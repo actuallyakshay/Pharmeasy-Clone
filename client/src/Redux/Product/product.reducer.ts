@@ -1,4 +1,4 @@
-import { IProduct, IProductReducer } from "../../@types/IProduct";
+import { IProductReducer } from "../../@types/IProduct";
 import { IProductAction } from "./product.action";
 import { ProductTypes } from "./product.type";
 
