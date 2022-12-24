@@ -19,11 +19,11 @@ import Product from "./Product";
 
 const SearchBar: React.FC = () => {
   const [input, setInput] = useState<string>("");
-
+  console.log(input)
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
-  const product: IProduct[] | null = useSelector(
+  const product: IProduct[] | undefined = useSelector(
     (store: AppState) => store?.SearchReducer?.productData
   );
 
@@ -34,6 +34,8 @@ const SearchBar: React.FC = () => {
       dispatch(getProduct(input));
     }
   }, [input]);
+
+  console.log(product);
 
   return (
     <Box pt="2.8rem" w="auto">

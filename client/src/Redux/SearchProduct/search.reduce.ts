@@ -10,7 +10,7 @@ const InitialState: ISearchProductReducer = {
 
 interface IAction {
   type: String;
-  payload?: IProduct[] | IProduct;
+  payload?: IProduct[];
 }
 
 export const SearchReducer = (state = InitialState, action: IAction) => {
