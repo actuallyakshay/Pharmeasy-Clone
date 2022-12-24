@@ -1,5 +1,5 @@
 import { Box, Divider, Flex, Heading, Text, VStack } from "@chakra-ui/layout";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import {
   FaBaby,
   FaChessKing,
@@ -16,12 +16,12 @@ import {
   GiStomach,
 } from "react-icons/gi";
 
-interface ITemp {
+interface IProps {
   temp: number;
   handleClick: Function;
 }
 
-const Sidebar: React.FC<ITemp> = ({ temp, handleClick }) => {
+const Sidebar: React.FC<IProps> = ({ temp, handleClick }) => {
   return (
     <VStack top="0%" position={"sticky"} align="start" h="100vh">
       <Heading

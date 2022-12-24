@@ -122,4 +122,18 @@ productRouter.delete(
   }
 );
 
+productRouter.get(
+  "/:id",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const product: IProduct | null = await Product.findById({
+        _id: req.params.id as string,
+      });
+      return res.status(200).send(product);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
+);
+
 export default productRouter;
