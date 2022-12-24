@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Box, Grid, Flex, Text, Image } from "@chakra-ui/react";
 import Title from "../../molecules/Title";
 

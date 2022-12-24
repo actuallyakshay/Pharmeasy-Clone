@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Box, Text, Grid, Image, Flex } from "@chakra-ui/react";
 
 const data = [

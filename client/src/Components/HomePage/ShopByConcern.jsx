@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Box, Text, Grid, Image } from "@chakra-ui/react";
 import ProductHeading from "../../molecules/ProductHeading";
 

@@ -81,10 +81,20 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
         </HStack>
         <Box className="off">{data.off}% Off</Box>
       </HStack>
-      <Text px="5" fontWeight={"500"} color="teal" letterSpacing={".5px"}>
-        {" "}
-        ₹{data.price1}.00
-      </Text>
+      <HStack px="5" w="full" justifyContent={"space-between"}>
+        <Text fontWeight={"500"} color="teal" letterSpacing={".5px"}>
+          {" "}
+          ₹{data.price1}.00
+        </Text>
+        <Box
+          _hover={{ cursor: "pointer" }}
+          fontWeight={"500"}
+          fontSize="15px"
+          color="#10847e"
+        >
+          ADD +
+        </Box>
+      </HStack>
     </VStack>
   );
 };
