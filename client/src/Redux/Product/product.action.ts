@@ -9,11 +9,18 @@ export interface IProductAction {
 }
 
 export const getProductData =
-  (category: string, firstLetter: string) =>
+  (
+    category: string,
+    firstLetter: string = "",
+    page: number = 1,
+    priceSort: string = "",
+    offSort: string = "",
+    priceArr: string = ""
+  ) =>
   (dispatch: Dispatch<IProductAction>) => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}`
+        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}&priceSort=${priceSort}&priceArr=${priceArr}&offSort=${offSort}&page=${page}&limit=30`
       )
       .then((res) => {
         dispatch({

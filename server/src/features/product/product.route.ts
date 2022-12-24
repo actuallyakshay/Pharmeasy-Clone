@@ -38,24 +38,24 @@ productRouter.get(
         }).limit(Number(limit));
         return res.send(products);
       } else if (category && offArr) {
-        let [min, max]: Array<number> = priceArr.split(",").map(Number);
+        let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
 
-        let products: IProduct[] = await Product.find(
-          { category },
-          {
-            $and: [{ $gte: { off: min } }, { $lt: { off: max } }],
-          }
-        );
+        let products: IProduct[] = await Product.find({
+          category: category,
+          $and: [{ off: { $gte: min } }, { off: { $lt: max } }],
+        })
+          .sort({ off: 1 })
+          .limit(Number(limit));
         return res.status(200).send(products);
       } else if (category && priceArr) {
-        let [min, max]: Array<number> = priceArr.split(",").map(Number);
+        let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
 
-        let products: IProduct[] = await Product.find(
-          { category },
-          {
-            $and: [{ $gte: { price1: min } }, { $lt: { price1: max } }],
-          }
-        );
+        let products: IProduct[] = await Product.find({
+          category: category,
+          $and: [{ price1: { $gte: min } }, { price1: { $lt: max } }],
+        })
+          .sort({ price1: 1 })
+          .limit(Number(limit));
         return res.status(200).send(products);
       } else if (category && priceSort) {
         if (priceSort === "asc") {
@@ -85,11 +85,11 @@ productRouter.get(
             .limit(Number(limit));
           return res.status(200).send(products);
         }
-      } else if (category && input) {
+      } else if (input) {
         let temp: RegExp = new RegExp(input, "i");
         let product: IProduct[] = await Product.find({ category, title: temp })
-          .skip((Number(page) - 1) * Number(limit))
-          .limit(Number(limit));
+          .limit(Number(limit))
+          .skip((Number(page) - 1) * Number(limit));
         return res.status(200).send(product);
       } else if (category) {
         let product: IProduct[] = await Product.find({ category })
