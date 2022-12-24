@@ -35,7 +35,6 @@ const Navbar = () => {
         m="auto"
         mt=".7rem"
         px=".5rem"
-        // align="center"
         justifyContent="space-between"
         alignContent="stretch"
       >

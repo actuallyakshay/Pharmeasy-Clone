@@ -14,6 +14,13 @@ import { useState } from "react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setInput(e.currentTarget.value);
+  };
+
+  console.log("Input", input);
+
   return (
     <Box pt="2.8rem" w="auto">
       <Flex direction="column" w="60%" m="auto">
@@ -38,6 +45,8 @@ const SearchBar = () => {
               borderRadius="30px"
               fontSize="15px"
               color="#aaafb3"
+              value={input}
+              onChange={handleChange}
               _focus={{ border: "none", outline: "none" }}
             />
             <InputRightElement width="4.5rem">
