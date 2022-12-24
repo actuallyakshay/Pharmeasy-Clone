@@ -23,6 +23,7 @@ const Filters: React.FC<IProps> = ({
       w={{ base: "100%", sm: "100%", md: "93%", lg: "80%" }}
       m="auto"
       mb="5"
+      mt="4"
       px={[1, 1, 4, 5]}
       justifyContent={"space-evenly"}
     >

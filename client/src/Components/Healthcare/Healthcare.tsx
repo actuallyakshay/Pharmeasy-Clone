@@ -50,14 +50,15 @@ export const Healthcare: React.FC = () => {
   };
 
   return (
-    <>
-      <Navbar />
-      <Filters
-        handleDiscountSort={handleDiscountSort}
-        handlePriceSort={handlePriceSort}
-        hanldePriceCategory={hanldePriceCategory}
-        hanldeDiscountCategory={hanldeDiscountCategory}
-      />
+    <Box>
+      <Box>
+        <Filters
+          handleDiscountSort={handleDiscountSort}
+          handlePriceSort={handlePriceSort}
+          hanldePriceCategory={hanldePriceCategory}
+          hanldeDiscountCategory={hanldeDiscountCategory}
+        />
+      </Box>
       <Box w="100%" m="auto">
         <Grid
           position={"relative"}
@@ -77,6 +78,6 @@ export const Healthcare: React.FC = () => {
       </Box>
       <br />
       <Pegination handlePage={handlePage} page={page} />
-    </>
+    </Box>
   );
 };
