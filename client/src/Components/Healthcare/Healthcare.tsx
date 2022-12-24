@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/layout";
+import { Box, Grid } from "@chakra-ui/layout";
 import React, { ChangeEvent, Dispatch, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -40,8 +40,13 @@ export const Healthcare: React.FC = () => {
     dispatch(getProductData(cat, "", page, "", offSort));
   };
 
-  const hanldePriceCategory = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(getProductData(cat, "", page, "", "", e.target.value));
+  const hanldePriceCategory = (val: string): void => {
+    dispatch(getProductData(cat, "", page, "", "", val));
+  };
+
+  const hanldeDiscountCategory = (dis: string): void => {
+    dispatch(getProductData(cat, "", page, "", "", "", dis));
+    // console.log(dis);
   };
 
   return (
@@ -50,23 +55,25 @@ export const Healthcare: React.FC = () => {
         handleDiscountSort={handleDiscountSort}
         handlePriceSort={handlePriceSort}
         hanldePriceCategory={hanldePriceCategory}
+        hanldeDiscountCategory={hanldeDiscountCategory}
       />
-      <Grid
-        position={"relative"}
-        gridTemplateColumns={{
-          base: ".5fr 3fr",
-          sm: ".5fr 3fr",
-          md: ".7fr 3fr",
-          lg: "1fr 3fr",
-        }}
-        gap={["0", "0", "3", "5"]}
-        w={{ base: "100%", sm: "100%", md: "93%", lg: "83%" }}
-        m="auto"
-        fontFamily={"poppins"}
-      >
-        <Sidebar temp={temp} handleClick={handleClick} />
-        <ProductComponent productData={productData} />
-      </Grid>
+      <Box w="100%" m="auto">
+        <Grid
+          position={"relative"}
+          gridTemplateColumns={{
+            base: ".5fr 3fr",
+            md: ".7fr 3fr",
+            lg: "1fr 3fr",
+          }}
+          gap={["0", "0", "3", "5"]}
+          w={{ base: "100%", sm: "100%", md: "93%", lg: "83%" }}
+          m="auto"
+          fontFamily={"poppins"}
+        >
+          <Sidebar temp={temp} handleClick={handleClick} />
+          <ProductComponent productData={productData} />
+        </Grid>
+      </Box>
       <br />
       <Pegination handlePage={handlePage} page={page} />
     </>

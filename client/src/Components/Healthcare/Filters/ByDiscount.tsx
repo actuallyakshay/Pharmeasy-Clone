@@ -21,14 +21,14 @@ const ByDiscount: React.FC<IProps> = ({ handleDiscountSort }) => {
         px={4}
         py={2}
         transition="all 0.5s"
-        borderRadius="md"
+        borderRadius="sm"
         borderWidth="1px"
         _expanded={{ bg: "teal", color: "white" }}
         _focus={{ boxShadow: "none" }}
         w="fit-content"
       >
         <HStack>
-          <Text>Discount</Text>
+          <Text>%</Text>
           <BiDownArrow />
         </HStack>
       </MenuButton>

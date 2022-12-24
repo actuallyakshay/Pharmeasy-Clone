@@ -15,12 +15,13 @@ export const getProductData =
     page: number = 1,
     priceSort: string = "",
     offSort: string = "",
-    priceArr: string = ""
+    priceArr: string = "",
+    offArr:string=""
   ) =>
   (dispatch: Dispatch<IProductAction>) => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}&priceSort=${priceSort}&priceArr=${priceArr}&offSort=${offSort}&page=${page}&limit=30`
+        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}&priceSort=${priceSort}&priceArr=${priceArr}&offSort=${offSort}&offArr=${offArr}&page=${page}&limit=30`
       )
       .then((res) => {
         dispatch({
