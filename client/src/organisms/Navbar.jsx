@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavbarTitle from "../molecules/NavbarTitle";
 import NavbarBorderBottom from "../molecules/NavbarBorderBottom";
 import NavbarItems from "../Components/Navbar/NavbarItems";
-import React , { useState } from "react";
+import React, { useState } from "react";
 import SearchBar from "../Components/Navbar/SearchBar";
 
 const Navbar = () => {
@@ -25,15 +25,15 @@ const Navbar = () => {
   return (
     <Box
       bg="white"
-      position={navbar ? "fixed" : "relative"}
+      position={"sticky"}
       w="100%"
-      zIndex={100}
-      top="0"
+      zIndex={2000}
+      top="0%"
     >
       <Flex
         w="90%"
         m="auto"
-        mt=".7rem"
+        pt=".7rem"
         px=".5rem"
         justifyContent="space-between"
         alignContent="stretch"
@@ -82,7 +82,7 @@ const Navbar = () => {
           <SearchBar />
         </Flex> */}
         <Flex align="center" gap="2rem">
-          {!navbar >= 1 && (
+          {/* {!navbar >= 1 && (
             <Flex align="center">
               <Button
                 cursor="pointer"
@@ -94,7 +94,7 @@ const Navbar = () => {
                 Download App
               </Button>
             </Flex>
-          )}
+          )} */}
           <Flex align="center" cursor="pointer">
             <BsPerson fontWeight="600" fontSize="21px" />
             <NavbarTitle title="Hello, Log in" />

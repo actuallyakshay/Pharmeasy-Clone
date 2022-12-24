@@ -38,6 +38,7 @@ productRouter.get(
         }).limit(Number(limit));
         return res.send(products);
       } else if (category && offArr) {
+        console.log(offArr);
         let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
 
         let products: IProduct[] = await Product.find({
