@@ -1,9 +1,10 @@
-import { ChakraProvider, Box } from "@chakra-ui/react";
-import React from "react";
-import AllRoutes from "./Routes/AllRoutes";
+import { ChakraProvider } from "@chakra-ui/react";
+import Footer from "./organisms/Footer";
+import Navbar from "./organisms/Navbar";
 
 export const App: React.FC = () => (
   <ChakraProvider>
-    <AllRoutes />
+    <Navbar />
+    <Footer />
   </ChakraProvider>
 );

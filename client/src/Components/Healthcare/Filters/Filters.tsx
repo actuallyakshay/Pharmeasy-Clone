@@ -1,6 +1,7 @@
 import { Heading, HStack } from "@chakra-ui/layout";
 import React from "react";
 import ByDiscount from "./ByDiscount";
+import ByDiscountCategory from "./ByDiscountCategory";
 import ByPrice from "./ByPrice";
 import ByPriceCategory from "./ByPriceCategory";
 
@@ -8,26 +9,35 @@ interface IProps {
   handlePriceSort: Function;
   handleDiscountSort: Function;
   hanldePriceCategory: Function;
+  hanldeDiscountCategory: Function;
 }
 
 const Filters: React.FC<IProps> = ({
   hanldePriceCategory,
   handlePriceSort,
   handleDiscountSort,
+  hanldeDiscountCategory,
 }) => {
   return (
     <HStack
-      border="1px solid green"
-      w={{ base: "100%", sm: "100%", md: "93%", lg: "83%" }}
+      w={{ base: "100%", sm: "100%", md: "93%", lg: "80%" }}
       m="auto"
-      justifyContent={"space-between"}
+      mb="5"
+      px={[1, 1, 4, 5]}
+      justifyContent={"space-evenly"}
     >
-      <Heading size="lg" fontWeight={"500"} color="blackAlpha.700">
+      <Heading
+        display={["none", "flex"]}
+        size="lg"
+        fontWeight={"500"}
+        color="blackAlpha.700"
+      >
         Filter :
       </Heading>
       <ByPrice handlePriceSort={handlePriceSort} />
       <ByPriceCategory hanldePriceCategory={hanldePriceCategory} />
       <ByDiscount handleDiscountSort={handleDiscountSort} />
+      <ByDiscountCategory hanldeDiscountCategory={hanldeDiscountCategory} />
     </HStack>
   );
 };
