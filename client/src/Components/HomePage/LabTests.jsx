@@ -1,4 +1,6 @@
+import React from "react";
 import { Box, Flex, Text, Image, Grid } from "@chakra-ui/react";
+
 import ProductHeading from "../../molecules/ProductHeading";
 
 import CommanCarousel from "../../molecules/CommanCarousel";

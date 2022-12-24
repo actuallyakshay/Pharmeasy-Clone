@@ -1,3 +1,4 @@
+import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Items from "../../molecules/Items";

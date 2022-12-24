@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavbarTitle from "../molecules/NavbarTitle";
 import NavbarBorderBottom from "../molecules/NavbarBorderBottom";
 import NavbarItems from "../Components/Navbar/NavbarItems";
-import { useState } from "react";
+import React , { useState } from "react";
 import SearchBar from "../Components/Navbar/SearchBar";
 
 const Navbar = () => {

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import Slider from "react-slick";

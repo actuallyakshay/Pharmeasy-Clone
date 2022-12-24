@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import { AppState } from "../../Redux/Store";
 import Pegination from "./Pegination";
 import Filters from "./Filters/Filters";
+import Navbar from "../../organisms/Navbar";
 
 export const Healthcare: React.FC = () => {
   const [temp, setTemp] = useState<number>(0);
@@ -46,11 +47,11 @@ export const Healthcare: React.FC = () => {
 
   const hanldeDiscountCategory = (dis: string): void => {
     dispatch(getProductData(cat, "", page, "", "", "", dis));
-    // console.log(dis);
   };
 
   return (
     <>
+      <Navbar />
       <Filters
         handleDiscountSort={handleDiscountSort}
         handlePriceSort={handlePriceSort}

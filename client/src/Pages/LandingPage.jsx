@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@chakra-ui/react";
 import SearchBar from "../Components/Navbar/SearchBar";
 import Category from "../Components/HomePage/Category";
