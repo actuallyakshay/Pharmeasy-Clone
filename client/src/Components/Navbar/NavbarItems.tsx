@@ -3,7 +3,13 @@ import { Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Items from "../../molecules/Items";
 
-const data = [
+interface IData {
+  link: string;
+  url: string;
+  title: string;
+}
+
+const data: IData[] = [
   { link: "/product/medicine", url: "", title: "Medicine" },
   { link: "", url: "", title: "Lab Tests" },
   { link: "/product/healthcare", url: "", title: "Healthcare" },
@@ -14,11 +20,11 @@ const data = [
   { link: "", url: "", title: "Value Store" },
 ];
 
-const NavbarItems = () => {
+const NavbarItems: React.FC = () => {
   return (
     <Flex w="90%" m="auto" align="center">
       <Flex w="54%" m="auto" justify="space-between" mt=".5rem">
-        {data.map(({ title, link }) => {
+        {data.map(({ title, link }: IData) => {
           return (
             <Link key={title} to={link}>
               <Items items={title} />
