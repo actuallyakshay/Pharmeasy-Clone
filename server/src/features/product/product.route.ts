@@ -88,7 +88,7 @@ productRouter.get(
         }
       } else if (input) {
         let temp: RegExp = new RegExp(input, "i");
-        let product: IProduct[] = await Product.find({ category, title: temp })
+        let product: IProduct[] = await Product.find({ name: temp })
           .limit(Number(limit))
           .skip((Number(page) - 1) * Number(limit));
         return res.status(200).send(product);
