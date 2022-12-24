@@ -23,3 +23,8 @@ export interface IProductReducer {
   productData?: IProduct[];
 }
 
+export interface ISearchProductReducer {
+  productLoading?: boolean;
+  productError?: boolean;
+  productData?: IProduct[];
+}
