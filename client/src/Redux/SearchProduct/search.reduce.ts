@@ -1,5 +1,6 @@
 import { SearchProductTypes } from "./search.actionTypes";
-import { ISearchProductReducer } from "../../@types/IProduct";
+import { IProduct } from "../../@types/IProduct";
+import { ISearchProductReducer } from "../../@types/ISearchProduct";
 
 const InitialState: ISearchProductReducer = {
   productLoading: false,
@@ -7,11 +8,12 @@ const InitialState: ISearchProductReducer = {
   productData: [],
 };
 
-interface Action {
+interface IAction {
   type: String;
-  payload: [];
+  payload?: IProduct[] | IProduct;
 }
-export const SearchReducer = (state = InitialState, action: Action) => {
+
+export const SearchReducer = (state = InitialState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {

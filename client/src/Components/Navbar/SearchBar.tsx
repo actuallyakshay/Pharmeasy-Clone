@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -10,16 +10,30 @@ import {
 } from "@chakra-ui/react";
 
 import { FiSearch } from "react-icons/fi";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../Redux/SearchProduct/search.action";
+import { useSelector } from "react-redux";
+import { IProduct } from "../../@types/IProduct";
+import { AppState } from "../../Redux/Store";
+import Product from "./Product";
 
-const SearchBar = () => {
-  const [input, setInput] = useState("");
+const SearchBar: React.FC = () => {
+  const [input, setInput] = useState<string>("");
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
+  const product: IProduct[] | null = useSelector(
+    (store: AppState) => store?.SearchReducer?.productData
+  );
 
-  console.log("Input", input);
+  const dispatch: Dispatch<any> = useDispatch();
+
+  useEffect(() => {
+    if (input.length > 0) {
+      dispatch(getProduct(input));
+    }
+  }, [input]);
 
   return (
     <Box pt="2.8rem" w="auto">
@@ -75,7 +89,11 @@ const SearchBar = () => {
               boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
               px={{ lg: ".4rem" }}
               zIndex={100}
-            ></Box>
+            >
+              {product?.map((item: IProduct, index: number) => {
+                return <Product key={index} data={item} />;
+              })}
+            </Box>
           )}
         </Flex>
       </Flex>

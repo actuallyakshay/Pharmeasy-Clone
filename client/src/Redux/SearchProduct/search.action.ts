@@ -18,7 +18,6 @@ const getProduct =
           type: SearchProductTypes.SEARCH_SUCCESS,
           payload: res.data,
         });
-        console.log("Data", res.data);
       })
       .catch((error) => {
         dispatch({ type: SearchProductTypes.SEARCH_FAILED });
