@@ -6,8 +6,6 @@ import CartSingleProduct from "./CartSingleProduct";
 import DeliverPinCode from "./DeliverPinCode";
 import ItemsCount from "./ItemsCount";
 
-const arr: Array<number> = [1, 2, 3];
-
 interface IProps {
   cartData: ICart[];
 }

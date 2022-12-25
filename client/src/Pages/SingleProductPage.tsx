@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Box, Grid, Text, Button } from "@chakra-ui/react";
 import axios from "axios";
-
 import { IProduct } from "../@types/IProduct";
 import OfferForYou from "../molecules/OfferForYou";
 import SingleProduct from "../molecules/SingleProduct";
@@ -32,7 +31,6 @@ const SingleProductPage: React.FC = () => {
       .get(`http://localhost:8080/product?category=${category}&limit=12`)
       .then((res) => {
         setSimilerProd(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -72,7 +70,7 @@ const SingleProductPage: React.FC = () => {
           >
             Please add item(s) to proceed
           </Text>
-          <Link to="product/cart">
+          <Link to="/cart">
             <Button
               w="100%"
               bg="#10847e"

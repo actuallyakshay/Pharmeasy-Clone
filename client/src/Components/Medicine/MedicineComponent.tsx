@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
 import { addDataInCart } from "../../Redux/Cart/cart.action";
@@ -25,6 +26,7 @@ export const MedicineComponent: React.FC<IProduct> = ({
 }) => {
   const dispatch: Dispatch<any> = useDispatch();
   const toast = useToast();
+  const navigate: NavigateFunction = useNavigate();
 
   const handleAddToCart = (id: string) => {
     let body = {
@@ -49,12 +51,17 @@ export const MedicineComponent: React.FC<IProduct> = ({
       gap="2"
       shadow={"md"}
       fontFamily="poppins"
+      cursor={"pointer"}
     >
-      <Box h="full">
+      <Box h="full" onClick={() => navigate(`/product/${_id}`)}>
         <Image src={image} />
       </Box>
       <Flex flexDirection={"column"} gap="1" align={"start"}>
-        <Flex w="full" align={"top"}>
+        <Flex
+          w="full"
+          align={"top"}
+          onClick={() => navigate(`/product/${_id}`)}
+        >
           <Text
             fontSize={"14px"}
             letterSpacing=".3px"
@@ -74,7 +81,7 @@ export const MedicineComponent: React.FC<IProduct> = ({
             </Text>
           </Box>
         </Flex>
-        <HStack>
+        <HStack onClick={() => navigate(`/product/${_id}`)}>
           <Image src="https://onemg.gumlet.io/w_20,h_20/q_auto,f_auto/rx_icon.png" />
           <Text fontSize={"11px"} color="blackAlpha.700">
             Prescription Required

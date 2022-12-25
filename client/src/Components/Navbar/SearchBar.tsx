@@ -21,7 +21,6 @@ import Product from "./Product";
 const SearchBar: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const previousValue = useRef<string | null>(null);
-  console.log(input);
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   };
@@ -41,7 +40,6 @@ const SearchBar: React.FC = () => {
     }
   }, [input]);
 
-  console.log("Product", product);
 
   return (
     <Box pt="2.8rem" w="auto">

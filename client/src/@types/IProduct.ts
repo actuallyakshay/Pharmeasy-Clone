@@ -6,7 +6,7 @@ export interface IProduct {
   price2?: number;
   off?: number;
   quantity?: number;
-  category?: string;
+  category: string;
   tablet?: string;
   ingredients?: string;
   company?: string;
