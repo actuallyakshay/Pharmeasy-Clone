@@ -34,7 +34,7 @@ const data: IOffer[] = [
     image: "https://cms-contents.pharmeasy.in/offer/d13f1e16d26-Moov_logo.jpg",
   },
 ];
-const OfferForYou = () => {
+const OfferForYou: React.FC = () => {
   return (
     <Box
       border="1px dashed  #f3cab1"

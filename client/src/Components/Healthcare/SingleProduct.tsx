@@ -8,7 +8,7 @@ import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
 import "../../index.css";
 import { addDataInCart } from "../../Redux/Cart/cart.action";
-import { Link } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
@@ -17,6 +17,7 @@ interface IProps {
 const SingleProduct: React.FC<IProps> = ({ data }) => {
   const dispatch: Dispatch<any> = useDispatch();
   const toast = useToast();
+  const navigate: NavigateFunction = useNavigate();
 
   const handleAddToCart = (id: string) => {
     let body = {
@@ -58,29 +59,28 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
       >
         <BsHeart size="30px" />
       </Box>
-      <Link to={`/product/${data._id}`}>
-        <Flex
-          h="35vh"
-          w="full"
-          justifyContent={"center"}
-          alignItems="center"
-          overflow={"hidden"}
-        >
-          <Image
-            src={data.image}
-            boxSize="auto"
-            maxW="100%"
-            maxH="100%"
-            _hover={{
-              transform: "scale(1.1)",
-              transformOrigin: "50% 50%",
-              cursor: "pointer",
-              opacity: ".9",
-            }}
-            transition="transform .4s"
-          />
-        </Flex>
-      </Link>
+      <Flex
+        h="35vh"
+        w="full"
+        justifyContent={"center"}
+        alignItems="center"
+        overflow={"hidden"}
+        onClick={() => navigate(`/product/${data._id}`)}
+      >
+        <Image
+          src={data.image}
+          boxSize="auto"
+          maxW="100%"
+          maxH="100%"
+          _hover={{
+            transform: "scale(1.1)",
+            transformOrigin: "50% 50%",
+            cursor: "pointer",
+            opacity: ".9",
+          }}
+          transition="transform .4s"
+        />
+      </Flex>
       <Heading
         color="blackAlpha.700"
         fontWeight={"500"}
