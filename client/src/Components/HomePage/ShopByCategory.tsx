@@ -3,7 +3,13 @@ import React from "react";
 import CardCarousel from "../../molecules/CardCarousel";
 import ProductHeading from "../../molecules/ProductHeading";
 
-const data = [
+interface IData {
+  src: string;
+  link: string;
+  category: string;
+}
+
+const data: IData[] = [
   {
     src: "https://cdn01.pharmeasy.in/dam/discovery/categoryImages/a7a03f6764393c65bab22e56de576a59.png?f=png?dim=256x0",
     link: "",
@@ -76,7 +82,7 @@ const data = [
   },
 ];
 
-const ShopByCategory = () => {
+const ShopByCategory: React.FC = () => {
   return (
     <Box w="93%" m="auto" mt="3rem">
       <Box mb="2rem">

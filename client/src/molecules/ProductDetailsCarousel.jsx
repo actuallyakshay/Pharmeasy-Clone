@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
-import Title from "./Title";
 
 const ProductDetailsCarousel = ({ data, slidesToShow, top, bg = "" }) => {
   const arrowRef = useRef(null);

@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Box, Grid, Flex, Text, Image } from "@chakra-ui/react";
+import { Box, Grid, Image } from "@chakra-ui/react";
 
-const OffersTags = () => {
+const OffersTags: React.FC = () => {
   return (
     <Box
       w={{ base: "95%", md: "96%", lg: "93%" }}

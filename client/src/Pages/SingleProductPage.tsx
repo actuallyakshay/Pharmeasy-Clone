@@ -12,7 +12,6 @@ const SingleProductPage: React.FC = () => {
   const id = useParams();
   const [product, setProduct] = useState<IProduct>({});
   const [similerProd, setSimilerProd] = useState<IProduct[]>([]);
-  const category = product?.category;
 
   const getSingleProduct = () => {
     axios
@@ -24,6 +23,8 @@ const SingleProductPage: React.FC = () => {
         console.log("Error", error);
       });
   };
+
+  const category = product?.category;
 
   const getSimilerProducts = () => {
     axios

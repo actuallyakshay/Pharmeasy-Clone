@@ -1,16 +1,38 @@
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/layout";
+import { useToast } from "@chakra-ui/react";
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
 import "../../index.css";
+import { addDataInCart } from "../../Redux/Cart/cart.action";
+import { Link } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
 }
 
 const SingleProduct: React.FC<IProps> = ({ data }) => {
+  const dispatch: Dispatch<any> = useDispatch();
+  const toast = useToast();
+
+  const handleAddToCart = (id: string) => {
+    let body = {
+      product: id,
+      quantity: 1,
+    };
+    dispatch(addDataInCart(body));
+    toast({
+      title: "Product Added Successfully",
+      status: "success",
+      position: "top",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
   return (
     <VStack
       position={"relative"}
@@ -94,6 +116,7 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
           fontWeight={"500"}
           fontSize="15px"
           color="#10847e"
+          onClick={() => handleAddToCart(data?._id)}
         >
           ADD +
         </Box>

@@ -2,7 +2,14 @@ import React from "react";
 
 import { Box, Text, Grid, Image, Flex } from "@chakra-ui/react";
 
-const data = [
+interface IData {
+  src: string;
+  count: string;
+  duration: string;
+  info: string;
+}
+
+const data: IData[] = [
   {
     src: "https://assets.pharmeasy.in/apothecary/images/family.svg?dim=96x0",
     count: "32 Million+",
@@ -29,7 +36,7 @@ const data = [
   },
 ];
 
-const WhyChooseUs = () => {
+const WhyChooseUs: React.FC = () => {
   return (
     <Box w="100%" m="auto" mt="4rem" bg="#f8f9ff">
       <Box
@@ -58,7 +65,7 @@ const WhyChooseUs = () => {
           columnGap={{ md: "2rem", lg: "5rem" }}
           rowGap={{ base: "2rem", lg: "unset" }}
         >
-          {data.map((item, index) => {
+          {data.map((item: IData, index: number) => {
             return (
               <Flex key={index}>
                 <Box mr=".5rem">
