@@ -47,6 +47,8 @@ const SearchBar: React.FC = () => {
     }
   }, [input]);
 
+  console.log("Product", product);
+
   return (
     <Box pt="2.8rem" w="auto">
       <Flex direction="column" w="60%" m="auto">

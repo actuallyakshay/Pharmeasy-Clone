@@ -13,7 +13,6 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
 
   const changeNavbarBg = () => {
-    console.log(window.scrollY);
     if (window.scrollY >= 1) {
       setNavbar(true);
     } else {
@@ -24,13 +23,7 @@ const Navbar = () => {
   window.addEventListener("scroll", changeNavbarBg);
 
   return (
-    <Box
-      bg="white"
-      position={"sticky"}
-      w="100%"
-      zIndex={30}
-      top="0%"
-    >
+    <Box bg="white" position={"sticky"} w="100%" zIndex={30} top="0%">
       <Flex
         w="90%"
         m="auto"
