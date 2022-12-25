@@ -7,6 +7,7 @@ import { IProduct } from "../@types/IProduct";
 import OfferForYou from "../molecules/OfferForYou";
 import SingleProduct from "../molecules/SingleProduct";
 import SimilerProducts from "../molecules/SimilerProducts";
+import ReviewPage from "../molecules/ReviewPage";
 
 const SingleProductPage: React.FC = () => {
   const id = useParams();
@@ -58,6 +59,7 @@ const SingleProductPage: React.FC = () => {
       >
         <Box py="2rem">
           <SingleProduct product={product} />
+          <ReviewPage id={product._id} />
           <SimilerProducts data={similerProd} />
         </Box>
         <Box pt="2rem">
