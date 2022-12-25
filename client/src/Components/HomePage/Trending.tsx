@@ -1,8 +1,17 @@
 import { Box, Text } from "@chakra-ui/react";
 import ProductDetailsCarousel from "../../molecules/ProductDetailsCarousel";
 import ProductHeading from "../../molecules/ProductHeading";
+import React from "react";
 
-const data = [
+interface IData {
+  src: string;
+  off: string;
+  title: string;
+  mrp: string;
+  price: string;
+}
+
+const data: IData[] = [
   {
     src: "https://cdn01.pharmeasy.in/dam/products_otc/I05582/dr-morepen-gluco-one-bg-03-glucometer-test-strips-box-of-50-1-1669655233.jpg?dim=1440x0",
     title: "Dr Morepen Gluco One Bg 03 Glucometer Test",
@@ -75,7 +84,7 @@ const data = [
   },
 ];
 
-const Trending = () => {
+const Trending: React.FC = () => {
   return (
     <Box w="93%" m="auto" mt="3rem">
       <Box mb="2rem">
