@@ -28,7 +28,6 @@ export const getProductData =
           type: ProductTypes.GET_PRODUCT_SUCCESS,
           payload: res.data,
         });
-        console.log(res.data);
       })
       .catch((e) => dispatch({ type: ProductTypes.GET_PRODUCT_ERROR }));
   };
