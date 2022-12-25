@@ -6,14 +6,12 @@ import NavbarTitle from "../molecules/NavbarTitle";
 import NavbarBorderBottom from "../molecules/NavbarBorderBottom";
 import NavbarItems from "../Components/Navbar/NavbarItems";
 import React, { useState } from "react";
-import SearchBar from "../Components/Navbar/SearchBar";
 import Login from "../Components/Login/Login";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
 
   const changeNavbarBg = () => {
-    console.log(window.scrollY);
     if (window.scrollY >= 1) {
       setNavbar(true);
     } else {
@@ -110,10 +108,12 @@ const Navbar = () => {
             />
             <NavbarTitle title="Offers" />
           </Flex>
-          <Flex align="center" cursor="pointer">
-            <IoMdCart fontWeight="600" fontSize="19px" />
-            <NavbarTitle title="Cart" />
-          </Flex>
+          <Link to='/cart'>
+            <Flex align="center" cursor="pointer">
+              <IoMdCart fontWeight="600" fontSize="19px" />
+              <NavbarTitle title="Cart" />
+            </Flex>
+          </Link>
         </Flex>
       </Flex>
       <NavbarBorderBottom />
