@@ -164,9 +164,11 @@ productRouter.patch("/:id", async (req: Request, res: Response) => {
         },
         {
           $push: {
-            "reviews.user_name": user_name,
-            "reviews.user_image": user_image,
-            "reviews.title": title,
+            reviews: {
+              user_name: user_name,
+              user_image: user_image,
+              title: title,
+            },
           },
         }
       );
