@@ -44,11 +44,12 @@ const authMiddleWare = async (
   }
 };
 
-cartRouter(authMiddleWare);
+// cartRouter(authMiddleWare);
 
 cartRouter.get(
   "",
-  async (req: ExtendedRequest, res: Response, next: NextFunction) => {
+  authMiddleWare,
+  async (req: ExtendedRequest, res: Response) => {
     try {
       const cart: ICart[] = await Cart.find({ _id: req.userId });
       return res.send(cart);
