@@ -1,16 +1,46 @@
-import { Box, Flex, Grid, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  HStack,
+  Image,
+  Text,
+  useToast,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
+import { addDataInCart } from "../../Redux/Cart/cart.action";
 
 export const MedicineComponent: React.FC<IProduct> = ({
+  _id,
   image,
   name,
   company,
   ingredients,
   price1,
   tablet,
-  ratings,
 }) => {
+  const dispatch: Dispatch<any> = useDispatch();
+  const toast = useToast();
+
+  const handleAddToCart = (id: string) => {
+    let body = {
+      product: id,
+      quantity: 1,
+    };
+    dispatch(addDataInCart(body));
+    toast({
+      title: "Product Added Successfully",
+      status: "success",
+      position: "top",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
   return (
     <Grid
       gridTemplateColumns={".5fr 2fr"}
@@ -74,6 +104,7 @@ export const MedicineComponent: React.FC<IProduct> = ({
             fontSize="15px"
             color="#10847e"
             ml="auto"
+            onClick={() => handleAddToCart(_id)}
           >
             ADD
           </Box>
