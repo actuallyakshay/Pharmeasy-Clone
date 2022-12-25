@@ -22,13 +22,7 @@ const Navbar = () => {
   window.addEventListener("scroll", changeNavbarBg);
 
   return (
-    <Box
-      bg="white"
-      position={"sticky"}
-      w="100%"
-      zIndex={30}
-      top="0%"
-    >
+    <Box bg="white" position={"sticky"} w="100%" zIndex={30} top="0%">
       <Flex
         w="90%"
         m="auto"
