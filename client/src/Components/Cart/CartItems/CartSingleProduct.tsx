@@ -12,6 +12,7 @@ import {
 import { AiFillDelete } from "react-icons/ai";
 import "../../../index.css";
 import QuantityButton from "./QuantityButton";
+import { ICart } from "../../../@types/ICart";
 
 const month: string[] = [
   "February",
@@ -37,14 +38,18 @@ let currentMonth = month[m - 1];
 let date = d.getDate();
 let futureDate = d.getDate() + 4;
 
-const CartSingleProduct: React.FC = () => {
+interface IProps {
+  data: ICart;
+}
+
+const CartSingleProduct: React.FC<IProps> = ({ data }) => {
   return (
     <Grid
       gridTemplateColumns=".3fr 1fr"
-      h="25vh"
       w="full"
       px="3"
       gap={{ base: "2fr", md: "2.5rem", lg: "3rem" }}
+      pb="3"
     >
       <Flex
         borderRadius="5px"
@@ -55,9 +60,7 @@ const CartSingleProduct: React.FC = () => {
         p="3"
       >
         <Image
-          src={
-            "https://cdn01.pharmeasy.in/dam/products_otc/C06595/luvlap-liquid-cleanser-anti-bacterial-food-grade-for-baby-bottles-accessories-and-vegetables-1000ml-2-1641794863.jpg"
-          }
+          src={data.product?.image}
           alt="x-x"
           boxSize="auto"
           maxW="100%"
@@ -67,8 +70,8 @@ const CartSingleProduct: React.FC = () => {
       <Box>
         <VStack w="full" align={"start"} direction={"column"}>
           <HStack w="full" justifyContent={"space-between"}>
-            <Text color="#4f585e" fontSize="16px" fontWeight="400">
-              product?.name
+            <Text color="#4f585e" fontSize="14px" fontWeight="400">
+              {data?.product?.name}
             </Text>
             <Box pr="2" cursor={"pointer"} _hover={{ color: "#f1474a" }}>
               <AiFillDelete fontSize={"20px"} />
@@ -84,7 +87,7 @@ const CartSingleProduct: React.FC = () => {
               fontWeight="500"
               fontFamily="poppins"
             >
-              ₹ 1700.00
+              ₹ {data?.product?.price1}
             </Text>
             <Text
               color="#10847e"
@@ -94,7 +97,7 @@ const CartSingleProduct: React.FC = () => {
             >
               MRP
               <span style={{ marginLeft: "3px" }}>
-                <del> 1800.00</del>
+                <del> {data?.product?.price2}</del>
               </span>
             </Text>
             <Text
@@ -104,7 +107,7 @@ const CartSingleProduct: React.FC = () => {
               fontWeight="500"
               fontFamily="poppins"
             >
-              % off
+              {data?.product?.off}% off
             </Text>
           </HStack>
           <HStack w="full" justifyContent={"space-between"}>
@@ -116,7 +119,7 @@ const CartSingleProduct: React.FC = () => {
             >
               Inclusive of all taxes
             </Text>
-            <QuantityButton />
+            <QuantityButton quantity={data?.quantity} id={data?.product._id} />
           </HStack>
           <Text
             color="#4f585e"

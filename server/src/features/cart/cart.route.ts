@@ -61,9 +61,10 @@ cartRouter.post("", authMiddleWare, async (req: Request, res: Response) => {
     if (cartItem) {
       if (req.body.type == "inc") {
         if (Check(dbProduct, req.body.quantity)) {
-          return res.send(
-            `Database have only ${dbProduct.quantity} of this item`
-          );
+          return res.send({
+            status: 0,
+            message: `Database have only ${dbProduct.quantity} quantity of this item`,
+          });
         } else {
           let cart = await Cart.findOneAndUpdate(
             { product: req.body.product },
@@ -99,9 +100,10 @@ cartRouter.post("", authMiddleWare, async (req: Request, res: Response) => {
       }
     } else {
       if (Check(dbProduct, req.body.quantity)) {
-        return res.send(
-          `Database have only ${dbProduct.quantity} of this item`
-        );
+        return res.send({
+          status: 0,
+          message: `Database have only ${dbProduct.quantity} quantity of this item`,
+        });
       } else {
         let cartItem = await Cart.create({
           ...req.body,

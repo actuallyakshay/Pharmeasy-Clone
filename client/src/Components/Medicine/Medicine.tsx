@@ -45,8 +45,6 @@ export const Medicine: React.FC = () => {
         justifyContent={"space-evenly"}
         mt="3"
         shadow={"md"}
-        // overflowX={{ base: "auto", lg: "none" }}
-        // style={myStyle}
       >
         {arr?.map((el: string, i: number) => {
           return (

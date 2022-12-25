@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import Cart from "../Components/Cart/Cart";
+import Cart from "../Pages/Cart";
 import { Healthcare } from "../Components/Healthcare/Healthcare";
 import { Medicine } from "../Components/Medicine/Medicine";
 import LandingPage from "../Pages/LandingPage";

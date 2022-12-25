@@ -10,7 +10,7 @@ export interface ICart extends Document {
 
 const cartSchema = new Schema<ICart>(
   {
-    quantity: Number,
+    quantity: { type: Number, required: true },
     user: {
       type: Schema.Types.ObjectId,
       ref: "user",
