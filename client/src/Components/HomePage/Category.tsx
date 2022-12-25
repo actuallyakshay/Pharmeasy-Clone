@@ -3,7 +3,13 @@ import React from "react";
 import { Box, Grid, Flex, Text, Image } from "@chakra-ui/react";
 import Title from "../../molecules/Title";
 
-const data = [
+interface IData {
+  src: string;
+  title: string;
+  discount: string;
+}
+
+const data: IData[] = [
   {
     src: "https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0",
     title: "Medicine",
@@ -46,7 +52,7 @@ const data = [
   },
 ];
 
-const category = () => {
+const category: React.FC = () => {
   return (
     <Box w="93%" m="auto" mt="3rem">
       <Grid
@@ -58,7 +64,7 @@ const category = () => {
         columnGap="2rem"
         rowGap={{ base: "2rem", lg: "unset" }}
       >
-        {data.map(({ src, title, discount }) => {
+        {data.map(({ src, title, discount }: IData) => {
           return (
             <Flex
               key={src}
@@ -72,7 +78,7 @@ const category = () => {
                 <Image src={src} alt="" />
               </Box>
               <Box mt="1rem">
-                <Title title={title} center="center" color="#30363c" />
+                <Title title={title} color="#30363c" />
               </Box>
               <Box mt=".5rem" pb=".3rem">
                 <Text

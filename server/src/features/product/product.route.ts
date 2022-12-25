@@ -50,7 +50,6 @@ productRouter.get(
         return res.status(200).send(products);
       } else if (category && priceArr) {
         let [min, max]: Array<number> = priceArr.split(" - ").map(Number);
-
         let products: IProduct[] = await Product.find({
           category: category,
           $and: [{ price1: { $gte: min } }, { price1: { $lt: max } }],

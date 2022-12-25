@@ -12,7 +12,7 @@ import ShopByConcern from "../Components/HomePage/ShopByConcern";
 import InTheSoptlight from "../Components/HomePage/InTheSoptlight";
 import WhyChooseUs from "../Components/HomePage/WhyChooseUs";
 
-const LandingPage = () => {
+const LandingPage: React.FC = () => {
   return (
     <Box>
       <Box
