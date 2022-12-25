@@ -135,4 +135,46 @@ productRouter.get(
   }
 );
 
+interface IBody {
+  type: string;
+  star?: number;
+  user_name?: string;
+  user_image?: string;
+  title?: string;
+}
+
+productRouter.patch("/:id", async (req: Request, res: Response) => {
+  const { type, star, user_name, user_image, title } = req.body as IBody;
+  console.log(type, star);
+  try {
+    if (type === "ratings") {
+      let product: IProduct | null = await Product.findByIdAndUpdate(
+        {
+          _id: req.params.id as string,
+        },
+        {
+          $push: { ratings: star },
+        }
+      );
+      return res.send(product);
+    } else if (type === "reviews") {
+      let product: IProduct | null = await Product.findByIdAndUpdate(
+        {
+          _id: req.params.id as string,
+        },
+        {
+          $push: {
+            "reviews.user_name": user_name,
+            "reviews.user_image": user_image,
+            "reviews.title": title,
+          },
+        }
+      );
+      return res.send(product);
+    }
+  } catch (error) {
+    return res.send(error);
+  }
+});
+
 export default productRouter;
