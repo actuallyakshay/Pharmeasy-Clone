@@ -7,8 +7,6 @@ import bcrypt, { compare, hash } from "bcrypt";
 
 const usersRouter: IRouter = Router();
 
-const Secretkey: Secret = String(process.env.SECRET_KEY);
-
 usersRouter.get(
   "/",
   async (req: Request, res: Response, next: NextFunction) => {
@@ -48,7 +46,7 @@ usersRouter.post(
         if (user) {
           let token: string = jwt.sign(
             { _id: user._id, phoneNumber: Number(user.phoneNumber) },
-            Secretkey
+            "17147714"
           );
           return res.send({ token: token, message: "User already Exist" });
         } else {
@@ -56,7 +54,7 @@ usersRouter.post(
             phoneNumber,
             role: "Guest",
           });
-          const token1: string = jwt.sign({ _id: temp._id }, Secretkey);
+          const token1: string = jwt.sign({ _id: temp._id }, "17147714");
           return res.send({ token: token1 });
         }
       } else if (email) {
@@ -68,7 +66,7 @@ usersRouter.post(
           if (match) {
             let token: string = jwt.sign(
               { _id: user._id, name: user.name, role: user.role },
-              Secretkey
+              "17147714"
             );
             return res.status(200).send({ token });
           } else {
