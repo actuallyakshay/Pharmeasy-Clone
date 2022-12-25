@@ -4,6 +4,7 @@ import Cart from "../Pages/Cart";
 import { Healthcare } from "../Components/Healthcare/Healthcare";
 import { Medicine } from "../Components/Medicine/Medicine";
 import LandingPage from "../Pages/LandingPage";
+import SingleProductPage from "../Pages/SingleProductPage";
 
 const AllRoutes: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const AllRoutes: React.FC = () => {
       <Route element={<Medicine />} path="/product/medicine"></Route>
       <Route element={<Cart />} path="/cart"></Route>
       <Route element={<Healthcare />} path="/product/healthcare"></Route>
+      <Route element={<SingleProductPage />} path="/product/:id"></Route>
     </Routes>
   );
 };

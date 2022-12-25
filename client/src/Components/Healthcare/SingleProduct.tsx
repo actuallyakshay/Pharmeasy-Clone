@@ -8,6 +8,7 @@ import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
 import "../../index.css";
 import { addDataInCart } from "../../Redux/Cart/cart.action";
+import { Link } from "react-router-dom";
 
 interface IProps {
   data: IProduct;
@@ -57,27 +58,29 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
       >
         <BsHeart size="30px" />
       </Box>
-      <Flex
-        h="35vh"
-        w="full"
-        justifyContent={"center"}
-        alignItems="center"
-        overflow={"hidden"}
-      >
-        <Image
-          src={data.image}
-          boxSize="auto"
-          maxW="100%"
-          maxH="100%"
-          _hover={{
-            transform: "scale(1.1)",
-            transformOrigin: "50% 50%",
-            cursor: "pointer",
-            opacity: ".9",
-          }}
-          transition="transform .4s"
-        />
-      </Flex>
+      <Link to={`/product/${data._id}`}>
+        <Flex
+          h="35vh"
+          w="full"
+          justifyContent={"center"}
+          alignItems="center"
+          overflow={"hidden"}
+        >
+          <Image
+            src={data.image}
+            boxSize="auto"
+            maxW="100%"
+            maxH="100%"
+            _hover={{
+              transform: "scale(1.1)",
+              transformOrigin: "50% 50%",
+              cursor: "pointer",
+              opacity: ".9",
+            }}
+            transition="transform .4s"
+          />
+        </Flex>
+      </Link>
       <Heading
         color="blackAlpha.700"
         fontWeight={"500"}
