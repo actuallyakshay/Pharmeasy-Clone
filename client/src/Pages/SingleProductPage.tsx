@@ -10,7 +10,7 @@ import SimilerProducts from "../molecules/SimilerProducts";
 
 const SingleProductPage: React.FC = () => {
   const id = useParams();
-  const [product, setProduct] = useState<IProduct>({});
+  const [product, setProduct] = useState<any>({});
   const [similerProd, setSimilerProd] = useState<IProduct[]>([]);
 
   const getSingleProduct = () => {
@@ -44,7 +44,7 @@ const SingleProductPage: React.FC = () => {
     } else {
       getSingleProduct();
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     getSimilerProducts();
