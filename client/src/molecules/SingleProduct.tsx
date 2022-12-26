@@ -3,6 +3,7 @@ import { Box, Grid, Flex, Image, Text, Button } from "@chakra-ui/react";
 import NavbarBorderBottom from "./NavbarBorderBottom";
 import { IProduct } from "../@types/IProduct";
 import { BiRupee } from "react-icons/bi";
+import Ratings from "./Ratings";
 
 interface IProps {
   product: IProduct;
@@ -131,6 +132,7 @@ const SingleProduct: React.FC<IProps> = ({ product }) => {
         </Flex>
 
         <NavbarBorderBottom />
+        <Ratings id={product._id} />
       </Box>
     </Grid>
   );
