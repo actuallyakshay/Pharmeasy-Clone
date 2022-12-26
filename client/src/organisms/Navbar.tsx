@@ -8,7 +8,7 @@ import NavbarItems from "../Components/Navbar/NavbarItems";
 import React, { useState } from "react";
 import Login from "../Components/Login/Login";
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
   const [navbar, setNavbar] = useState(false);
 
   const changeNavbarBg = () => {
@@ -66,31 +66,16 @@ const Navbar = () => {
                 411033 Pune
               </Text>
               <Flex align="center">
-                {/* <MdOutlineKeyboardArrowDown fontWeight="600" fontSize="21px" /> */}
+              
               </Flex>
             </Flex>
           </Flex>
         </Flex>
-        {/* <Flex flex="2">
-          <SearchBar />
-        </Flex> */}
+     
         <Flex align="center" gap="2rem">
-          {/* {!navbar >= 1 && (
-            <Flex align="center">
-              <Button
-                cursor="pointer"
-                bg="rgb(238, 244, 255)"
-                // leftIcon={
-                //   <FaMobileAlt fontWeight="400" fontSize="25px" color="black" />
-                // }
-              >
-                Download App
-              </Button>
-            </Flex>
-          )} */}
+       
           <Flex align="center" cursor="pointer">
             <BsPerson fontWeight="600" fontSize="21px" />
-            {/* <NavbarTitle title="Hello, Log in" /> */}
             <Login />
           </Flex>
           <Flex align="center" cursor="pointer">

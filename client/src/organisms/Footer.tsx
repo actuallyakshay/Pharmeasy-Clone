@@ -16,7 +16,7 @@ import FooterHeading from "../molecules/FooterHeading";
 import FooterTitle from "../molecules/FooterTitle";
 import SocialIoncs from "../molecules/SocialIoncs";
 
-const company = [
+const company: Array<string> = [
   "About Us",
   "Careers",
   "Blog",
@@ -24,7 +24,7 @@ const company = [
   "Sell at PharmEasy",
 ];
 
-const services = [
+const services: Array<string> = [
   "Order Medicine",
   "Healthcare Products",
   "Lab Tests",
@@ -32,7 +32,7 @@ const services = [
   "Surgeries",
 ];
 
-const category = [
+const category: Array<string> = [
   "Covid Essentials",
   "Mega Clearance Sale",
   "Personal Care",
@@ -51,7 +51,7 @@ const category = [
   "Top Products",
 ];
 
-const help = [
+const help: Array<string> = [
   "Browse All Medicines",
   "Browse All Molecules",
   "Browse All Cities",
@@ -60,7 +60,7 @@ const help = [
   "FAQ",
 ];
 
-const faq = [
+const faq: Array<string> = [
   "Editorial Policy",
   "Privacy Policy",
   "Vulnerability Disclosure Policy ",
@@ -69,7 +69,7 @@ const faq = [
   "Return Policy",
 ];
 
-const Partners = [
+const Partners: Array<string> = [
   "https://assets.pharmeasy.in/apothecary/images/gpay.png?dim=1440x0",
   "https://assets.pharmeasy.in/apothecary/images/paytm.png?dim=1440x0",
   "https://assets.pharmeasy.in/apothecary/images/phonepe.png?dim=1440x0",
@@ -81,7 +81,7 @@ const Partners = [
   "https://assets.pharmeasy.in/apothecary/images/visa.png?dim=1440x0",
   "https://assets.pharmeasy.in/apothecary/images/rupay.png?dim=1440x0",
 ];
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Box
       w="95%"
@@ -94,13 +94,13 @@ const Footer = () => {
           <Box>
             <FooterHeading heading="Company" />
             <Box mt=".5rem" mb="2rem">
-              {company.map((item, index) => {
+              {company.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </Box>
             <FooterHeading heading="Our Services" />
             <Box mt=".5rem">
-              {services.map((item, index) => {
+              {services.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </Box>
@@ -108,7 +108,7 @@ const Footer = () => {
           <Box>
             <FooterHeading heading="Featured Categories" />
             <Box mt=".5rem">
-              {category.map((item, index) => {
+              {category.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </Box>
@@ -116,13 +116,13 @@ const Footer = () => {
           <Box>
             <FooterHeading heading="Need Help" />
             <Box mt=".5rem" mb="2rem">
-              {help.map((item, index) => {
+              {help.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </Box>
             <FooterHeading heading="Policy Info" />
             <Box mt=".5rem">
-              {faq.map((item, index) => {
+              {faq.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </Box>
@@ -145,7 +145,7 @@ const Footer = () => {
               justifyContent="space-between"
               align="center"
             >
-              {Partners.map((item, index) => {
+              {Partners.map((item: string, index: number) => {
                 return (
                   <Box key={index}>
                     <Image src={item} alt="partnes" objectFit="cover" />
@@ -175,7 +175,7 @@ const Footer = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              {company.map((item, index) => {
+              {company.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </AccordionPanel>
@@ -191,7 +191,7 @@ const Footer = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              {services.map((item, index) => {
+              {services.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </AccordionPanel>
@@ -207,7 +207,7 @@ const Footer = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              {category.map((item, index) => {
+              {category.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </AccordionPanel>
@@ -223,7 +223,7 @@ const Footer = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              {help.map((item, index) => {
+              {help.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </AccordionPanel>
@@ -239,7 +239,7 @@ const Footer = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              {faq.map((item, index) => {
+              {faq.map((item: string, index: number) => {
                 return <FooterTitle key={index} title={item} />;
               })}
             </AccordionPanel>
@@ -266,7 +266,7 @@ const Footer = () => {
               rowGap="1rem"
               columnGap="2rem"
             >
-              {Partners?.map((item, index) => {
+              {Partners?.map((item: string, index: number) => {
                 return (
                   <Box key={index}>
                     <Image src={item} alt="partnes" objectFit="cover" />

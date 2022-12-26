@@ -2,7 +2,15 @@ import { Box, Text } from "@chakra-ui/react";
 import ProductDetailsCarousel from "../../molecules/ProductDetailsCarousel";
 import ProductHeading from "../../molecules/ProductHeading";
 
-const data = [
+interface IData {
+  src: string;
+  title: string;
+  mrp: string;
+  price: string;
+  off: string;
+}
+
+const data:IData[] = [
   {
     src: "https://cdn01.pharmeasy.in/dam/products_otc/O80793/pharmeasy-ironfolic-acid-with-zinc-vitamin-c-b12-maintains-overall-health-bottle-of-60-2-1668672053.jpg?dim=1440x0",
     title: "Pharmeasy Iron+folic Acid With Zinc,Vitamin",
@@ -75,7 +83,7 @@ const data = [
   },
 ];
 
-const NewLaunches = () => {
+const NewLaunches:React.FC = () => {
   return (
     <Box w="93%" m="auto" mt="3rem">
       <Box mb="2rem">

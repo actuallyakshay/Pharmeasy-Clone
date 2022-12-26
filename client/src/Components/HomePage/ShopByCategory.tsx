@@ -3,13 +3,13 @@ import React from "react";
 import CardCarousel from "../../molecules/CardCarousel";
 import ProductHeading from "../../molecules/ProductHeading";
 
-interface IData {
+export interface IDataShopByCat {
   src: string;
   link: string;
   category: string;
 }
 
-const data: IData[] = [
+const data: IDataShopByCat[] = [
   {
     src: "https://cdn01.pharmeasy.in/dam/discovery/categoryImages/a7a03f6764393c65bab22e56de576a59.png?f=png?dim=256x0",
     link: "",

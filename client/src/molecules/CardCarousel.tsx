@@ -1,17 +1,29 @@
 import React from "react";
 
-import { Box, Flex, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import Slider from "react-slick";
+import Slider, { Settings as CarouselSettings } from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import Title from "../molecules/Title";
+import Title from "./Title";
+import { IDataShopByCat } from "../Components/HomePage/ShopByCategory";
 
-const CardCarousel = ({ data, slidesToShow, top }) => {
-  const arrowRef = useRef(null);
-  const [show, setShow] = useState(false);
+interface IProps {
+  data: IDataShopByCat[];
+  slidesToShow: string;
+  top: string;
+}
+
+const CardCarousel: React.FC<IProps> = ({ data, slidesToShow, top }) => {
+  interface CarouselProps {
+    carouselSettings?: CarouselSettings;
+    children?: React.ReactChild[];
+  }
+  const arrowRef = useRef<any>(null);
+  const [show, setShow] = useState<boolean>(false);
 
   const prevSlide = () => {
     arrowRef.current.slickPrev();
@@ -56,10 +68,11 @@ const CardCarousel = ({ data, slidesToShow, top }) => {
       },
     ],
   };
+
   return (
     <Box position="relative">
       <Slider {...settings} ref={arrowRef}>
-        {data.map((item, el) => {
+        {data?.map((item: IDataShopByCat, el: number) => {
           return (
             <Box key={el} w="100%" pr="1.5rem">
               <Box>
@@ -76,18 +89,14 @@ const CardCarousel = ({ data, slidesToShow, top }) => {
                   <Image src={item.src} alt="" w="100%" h="100%" />
                 </Flex>
                 <Box my="1rem">
-                  <Title
-                    title={item.category}
-                    color="#30363c"
-                    center="center"
-                  />
+                  <Title title={item.category} color="#30363c" />
                 </Box>
               </Box>
             </Box>
           );
         })}
       </Slider>
-      {show > 0 && (
+      {show && (
         <Flex
           position="absolute"
           w="2.5rem"
