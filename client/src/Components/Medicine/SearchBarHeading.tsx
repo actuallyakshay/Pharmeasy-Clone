@@ -1,8 +1,7 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
-import { Search2Icon } from "@chakra-ui/icons";
 import { CgNotes } from "react-icons/cg";
 
-const SearchBarHeading = () => {
+const SearchBarHeading: React.FC = () => {
   return (
     <Flex>
       <Text

@@ -1,6 +1,7 @@
 import { Box, Button, Divider, Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 import { ICart } from "../../../@types/ICart";
+import ProcessToCheckout from "../Checkout/ProcessToCheckout";
 import BillSummery from "./BillSummery";
 
 interface IProps {
@@ -30,17 +31,7 @@ const CartTotal: React.FC<IProps> = ({ cartData }) => {
       <Divider />
       <BillSummery cartData={cartData} />
 
-      <Button
-        letterSpacing={".3px"}
-        fontWeight="500"
-        fontSize={"12px"}
-        w="90%"
-        color="blackAlpha.700"
-        size="lg"
-        m="4 !important"
-      >
-        Proceed to checkout
-      </Button>
+      <ProcessToCheckout />
     </VStack>
   );
 };
