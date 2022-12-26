@@ -13,6 +13,10 @@ import { AiFillDelete } from "react-icons/ai";
 import "../../../index.css";
 import QuantityButton from "./QuantityButton";
 import { ICart } from "../../../@types/ICart";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { getCartData } from "../../../Redux/Cart/cart.action";
 
 const month: string[] = [
   "February",
@@ -42,7 +46,25 @@ interface IProps {
   data: ICart;
 }
 
+var token: string =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2E3ZGRlMzUyOGUyMzQ5YzZmZGJhYjYiLCJwaG9uZU51bWJlciI6ODA4MCwiaWF0IjoxNjcxOTc3MDg0fQ.LlIvWL8LQ2vhae7n0S_rMbcwgU2usmk8IRo2I67iQT0";
+
 const CartSingleProduct: React.FC<IProps> = ({ data }) => {
+  const dispatch: Dispatch<any> = useDispatch();
+  const hanldeDeleteInCart = (id: string) => {
+    axios
+      .delete(`${process.env.REACT_APP_URL}/cart/${id}`, {
+        headers: {
+          token: token,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(getCartData());
+      })
+      .catch((e) => console.log(e));
+  };
+
   return (
     <Grid
       gridTemplateColumns=".3fr 1fr"
@@ -73,7 +95,12 @@ const CartSingleProduct: React.FC<IProps> = ({ data }) => {
             <Text color="#4f585e" fontSize="14px" fontWeight="400">
               {data?.product?.name}
             </Text>
-            <Box pr="2" cursor={"pointer"} _hover={{ color: "#f1474a" }}>
+            <Box
+              onClick={() => hanldeDeleteInCart(data?._id)}
+              pr="2"
+              cursor={"pointer"}
+              _hover={{ color: "#f1474a" }}
+            >
               <AiFillDelete fontSize={"20px"} />
             </Box>
           </HStack>
