@@ -2,11 +2,13 @@ import React from "react";
 
 import { Box, Grid, Flex, Text, Image } from "@chakra-ui/react";
 import Title from "../../molecules/Title";
+import { Link } from "react-router-dom";
 
 interface IData {
   src: string;
   title: string;
   discount: string;
+  link: string;
 }
 
 const data: IData[] = [
@@ -14,41 +16,49 @@ const data: IData[] = [
     src: "https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0",
     title: "Medicine",
     discount: "upto 20% OFF",
+    link: "/product/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/labtest_ff.webp?dim=256x0",
     title: "Lab Tests",
     discount: "upto 70% OFF",
+    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/healthcare_ff.webp?dim=256x0",
     title: "Healthcare",
     discount: "upto 60% OFF",
+    link: "/product/healthcare",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/offers_1_ff.webp?dim=256x0",
     title: "Sugeries",
     discount: "",
+    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/health_blogs_ff.webp?dim=256x0",
     title: "Health Blogs",
     discount: "",
+    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/plus_ff.webp?dim=256x0",
     title: "PLUS ",
     discount: "SAVE 5% EXTRA",
+    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/offers_ff.webp?dim=256x0",
     title: "Offers",
     discount: "",
+    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/value_store.png?dim=256x0",
     title: "Value Store",
     discount: "upto 20% OFF",
+    link: "/medicine",
   },
 ];
 
@@ -64,7 +74,7 @@ const category: React.FC = () => {
         columnGap="2rem"
         rowGap={{ base: "2rem", lg: "unset" }}
       >
-        {data.map(({ src, title, discount }: IData) => {
+        {data.map(({ src, title, discount, link }: IData) => {
           return (
             <Flex
               key={src}
@@ -75,7 +85,9 @@ const category: React.FC = () => {
               }}
             >
               <Box mx="1rem" borderBottom=".1px solid #d1d3d5">
-                <Image src={src} alt="" />
+                <Link to={link}>
+                  <Image src={src} alt="" />
+                </Link>
               </Box>
               <Box mt="1rem">
                 <Title title={title} color="#30363c" />

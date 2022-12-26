@@ -2,8 +2,8 @@ export interface IProduct {
   _id: string;
   image?: string;
   name?: string;
-  price1?: number;
-  price2?: number;
+  price1: number;
+  price2: number;
   off?: number;
   quantity?: number;
   category: string;

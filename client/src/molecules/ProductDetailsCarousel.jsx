@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
+import "../index.css"
 
 const ProductDetailsCarousel = ({ data, slidesToShow, top, bg = "" }) => {
   const arrowRef = useRef(null);
@@ -133,9 +134,10 @@ const ProductDetailsCarousel = ({ data, slidesToShow, top, bg = "" }) => {
                       {item?.price}
                     </Text>
                     <Text
-                      color="#f47779"
-                      fontSize="15px"
-                      fontWeight="700"
+                      className="off"
+                      color="white"
+                      fontSize="9px"
+                      fontWeight="500"
                       fontFamily="poppins"
                       textTransform="uppercase"
                     >

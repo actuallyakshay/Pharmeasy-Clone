@@ -53,7 +53,7 @@ const Navbar = () => {
                 fontSize="12px"
                 color="#4f585e"
               >
-                Delivery to
+               ⚡ Delivery to
               </Text>
             </Flex>
             <Flex align="center">
