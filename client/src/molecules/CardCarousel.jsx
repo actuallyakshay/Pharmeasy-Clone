@@ -2,28 +2,20 @@ import React from "react";
 
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import Slider, { Settings as CarouselSettings } from "react-slick";
+import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Title from "./Title";
-import { IDataShopByCat } from "../Components/HomePage/ShopByCategory";
 
-interface IProps {
-  data: IDataShopByCat[];
-  slidesToShow: string;
-  top: string;
-}
 
-const CardCarousel: React.FC<IProps> = ({ data, slidesToShow, top }) => {
-  interface CarouselProps {
-    carouselSettings?: CarouselSettings;
-    children?: React.ReactChild[];
-  }
-  const arrowRef = useRef<any>(null);
-  const [show, setShow] = useState<boolean>(false);
+
+const CardCarousel = ({ data, slidesToShow, top }) => {
+
+  const arrowRef = useRef(null);
+  const [show, setShow] = useState(false);
 
   const prevSlide = () => {
     arrowRef.current.slickPrev();
@@ -72,7 +64,7 @@ const CardCarousel: React.FC<IProps> = ({ data, slidesToShow, top }) => {
   return (
     <Box position="relative">
       <Slider {...settings} ref={arrowRef}>
-        {data?.map((item: IDataShopByCat, el: number) => {
+        {data?.map((item, el) => {
           return (
             <Box key={el} w="100%" pr="1.5rem">
               <Box>
