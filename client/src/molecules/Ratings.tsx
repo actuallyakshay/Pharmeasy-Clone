@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Grid,
-  HStack,
   Progress,
   Stack,
   useToast,
@@ -29,16 +28,13 @@ const Ratings: React.FC<IProps> = ({ id }) => {
   const toast = useToast();
 
   const rateThisProduct = (rating: number) => {
-    console.log("Ratings", rating);
     let body: IBody = {
       type: "ratings",
       star: rating,
     };
     axios
       .patch(`http://localhost:8080/product/${id}`, body)
-      .then((res) => {
-        console.log(res.data);
-      })
+      .then((res) => {})
       .catch((error) => {
         console.log("Error", error);
       });
