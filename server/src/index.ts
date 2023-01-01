@@ -1,10 +1,5 @@
 import { config } from "dotenv";
-import express, {
-  Request,
-  Response,
-  Application,
-  ErrorRequestHandler,
-} from "express";
+import express, { Request, Response, Application } from "express";
 import { Server } from "http";
 import { connect } from "./config/db";
 import { errorhandler } from "./middleware/errorhandles";
@@ -12,6 +7,7 @@ import usersRouter from "./features/Auth/user.route";
 import productRouter from "./features/product/product.route";
 import cors from "cors";
 import cartRouter from "./features/cart/cart.route";
+import trashRouter from "./features/Trash/trash.route";
 
 config();
 
@@ -25,6 +21,7 @@ app.use(cors());
 app.use("/user", usersRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
+app.use("/trash", trashRouter);
 
 app.get("/", (req: Request, res: Response) => {
   try {

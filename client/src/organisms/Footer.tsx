@@ -15,6 +15,7 @@ import {
 import FooterHeading from "../molecules/FooterHeading";
 import FooterTitle from "../molecules/FooterTitle";
 import SocialIoncs from "../molecules/SocialIoncs";
+import { useLocation } from "react-router-dom";
 
 const company: Array<string> = [
   "About Us",
@@ -82,12 +83,15 @@ const Partners: Array<string> = [
   "https://assets.pharmeasy.in/apothecary/images/rupay.png?dim=1440x0",
 ];
 const Footer: React.FC = () => {
+  const location = useLocation();
+
   return (
     <Box
       w="95%"
       m="auto"
       bg="#eef4ff"
       mt={{ base: "2rem", md: "3rem", lg: "4rem" }}
+      display={location.pathname.includes("admin") ? "none" : "flex"}
     >
       <Box w="93%" m="auto" py="4rem" display={{ base: "none", lg: "block" }}>
         <Grid gridTemplateColumns="1fr 1fr 1fr .5fr" mb="3rem">

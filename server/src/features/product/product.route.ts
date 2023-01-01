@@ -1,5 +1,6 @@
 import { IProduct, Product } from "./product.model";
 import { IRouter, NextFunction, Request, Response, Router } from "express";
+import { Trash } from "../Trash/trash.model";
 
 const productRouter: IRouter = Router();
 
@@ -96,30 +97,27 @@ productRouter.get(
           .skip((Number(page) - 1) * Number(limit))
           .limit(Number(limit));
         return res.status(200).send(product);
+      } else {
+        let product: IProduct[] = await Product.find()
+          .skip((Number(page) - 1) * Number(limit))
+          .limit(Number(limit));
+        return res.status(200).send(product);
       }
-      let product: IProduct[] = await Product.find()
-        .skip((Number(page) - 1) * Number(limit))
-        .limit(Number(limit));
-      return res.status(200).send(product);
     } catch (error) {
       return res.status(500).send(error);
     }
   }
 );
 
-productRouter.delete(
-  "/:id",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      let product: IProduct | null = await Product.findByIdAndDelete({
-        _id: req.params.id as string,
-      });
-      return res.send("Deleted Successfully");
-    } catch (error) {
-      return res.status(500).send(error);
-    }
+productRouter.put("/:id", async (req: Request, res: Response) => {
+  try {
+    let trash: IProduct = await Trash.create(req.body);
+    await Product.findByIdAndDelete(req.params.id as string);
+    res.send(trash);
+  } catch (e) {
+    return res.send(e);
   }
-);
+});
 
 productRouter.get(
   "/:id",
