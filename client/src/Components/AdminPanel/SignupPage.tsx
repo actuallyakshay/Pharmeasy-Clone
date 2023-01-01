@@ -95,23 +95,23 @@ const SignupPage: React.FC = () => {
                 <Input
                   // value={signupform.name}
                   // onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="Enter your name"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
                   name="name"
                 />
@@ -124,23 +124,23 @@ const SignupPage: React.FC = () => {
                 <Input
                   // value={signupform.email}
                   // onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="your-email@example.com"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
                   name="email"
                 />
@@ -153,23 +153,23 @@ const SignupPage: React.FC = () => {
                 <Input
                   // value={signupform.password}
                   // onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="password"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="Enter your name"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
                   name="password"
                 />
