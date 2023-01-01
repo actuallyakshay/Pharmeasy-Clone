@@ -23,24 +23,13 @@ import { BsPerson, BsShieldLockFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-function SignupPage() {
+const SignupPage: React.FC = () => {
   const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
 
-  const [signupform, setSignup] = useState({
-    name: "",
-    pinCode: "",
-    email: "",
-    role: "",
-  });
-
-  const handleSignupForm = (e) => {
-    setSignup({ ...signupform, [e.target.name]: e.target.value });
-  };
-
   return (
-    <Box position={"realtive"}>
+    <Box>
       <Box position={"absolute"} w="fit-content" opacity={0.5} zIndex={-1}>
         <Image
           m="auto"
@@ -59,8 +48,8 @@ function SignupPage() {
       >
         <Box>
           <Image
-            src="https://res.cloudinary.com/dhxtxmw5n/image/upload/v1671389264/logo_bj5fla.png"
-            w="30%"
+            src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0"
+            w="90%"
           />
         </Box>
         <HStack>
@@ -84,8 +73,8 @@ function SignupPage() {
       >
         <Flex h="full" display={["none", "none", "flex", "flex"]}>
           <Image
-            src="https://i.ibb.co/NsqbWyn/undraw-step-to-the-sun-nxqq.png"
-            w="70%"
+            src="https://user-images.githubusercontent.com/107462720/210168012-59f6b109-27ab-4bdf-9893-0d8fa4c57b8b.png"
+            w="90%"
             m="auto"
             alignContent={"end"}
             opacity=".96"
@@ -104,8 +93,8 @@ function SignupPage() {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  value={signupform.name}
-                  onChange={(e) => handleSignupForm(e)}
+                  // value={signupform.name}
+                  // onChange={(e) => handleSignupForm(e)}
                   fontWeight={"600"}
                   letterSpacing="1px"
                   type="text"
@@ -124,7 +113,6 @@ function SignupPage() {
                     letterSpacing: "0",
                     fontWeight: "400",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="name"
                 />
               </InputGroup>
@@ -134,8 +122,8 @@ function SignupPage() {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  value={signupform.email}
-                  onChange={(e) => handleSignupForm(e)}
+                  // value={signupform.email}
+                  // onChange={(e) => handleSignupForm(e)}
                   fontWeight={"600"}
                   letterSpacing="1px"
                   type="text"
@@ -154,7 +142,6 @@ function SignupPage() {
                     letterSpacing: "0",
                     fontWeight: "400",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="email"
                 />
               </InputGroup>
@@ -164,8 +151,8 @@ function SignupPage() {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  value={signupform.password}
-                  onChange={(e) => handleSignupForm(e)}
+                  // value={signupform.password}
+                  // onChange={(e) => handleSignupForm(e)}
                   fontWeight={"600"}
                   letterSpacing="1px"
                   type="password"
@@ -184,54 +171,53 @@ function SignupPage() {
                     letterSpacing: "0",
                     fontWeight: "400",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="password"
                 />
               </InputGroup>
             </FormControl>
             <Select
               name="role"
-              onChange={(e) => handleSignupForm(e)}
+              // onChange={(e) => handleSignupForm(e)}
               placeholder="Select role"
             >
               <option value="ProductManager">Product Manager</option>
               <option value="Doctor">Doctor</option>
             </Select>
             <Button
-              bgColor="rgba(255, 49, 109, 0.7)"
+              bgColor="teal"
               w="full"
               size="sm"
               py="4"
-              _hover={{ bgColor: "rgba(255, 49, 109, 0.7)" }}
+              _hover={{ bgColor: "teal" }}
               letterSpacing={"1.3px"}
               fontWeight="500"
               fontSize="14px"
               color="white"
               leftIcon={<AiOutlineMail fontSize={"20px"} />}
-              onClick={() => {
-                console.log(signupform);
-                axios
-                  .post(`${process.env.REACT_APP_URL}/user/signup`, signupform)
-                  .then((res) => {
-                    res.data == "Acc created"
-                      ? toast({
-                          title: "Account created successfully",
-                          status: "success",
-                          position: "top",
-                          duration: 2000,
-                          isClosable: true,
-                        }) && navigate("/login")
-                      : toast({
-                          title:
-                            "This acc has been already register previously",
-                          status: "error",
-                          position: "top",
-                          duration: 2000,
-                          isClosable: true,
-                        });
-                  })
-                  .catch((err) => console.log(err.message));
-              }}
+              // onClick={() => {
+              //   // console.log(signupform);
+              //   axios
+              //     .post(`${process.env.REACT_APP_URL}/user/signup`, signupform)
+              //     .then((res) => {
+              //       res.data == "Acc created"
+              //         ? toast({
+              //             title: "Account created successfully",
+              //             status: "success",
+              //             position: "top",
+              //             duration: 2000,
+              //             isClosable: true,
+              //           }) && navigate("/admin/login")
+              //         : toast({
+              //             title:
+              //               "This acc has been already register previously",
+              //             status: "error",
+              //             position: "top",
+              //             duration: 2000,
+              //             isClosable: true,
+              //           });
+              //     })
+              //     .catch((err) => console.log(err.message));
+              // }}
             >
               {" "}
               Create User
@@ -242,7 +228,7 @@ function SignupPage() {
                 as="i"
                 _hover={{ textDecoration: "underline" }}
                 fontSize="12px"
-                color="rgba(255, 49, 109, 0.7)"
+                color="teal"
               >
                 GO TO DASHBOARD{" "}
               </Text>
@@ -252,6 +238,6 @@ function SignupPage() {
       </Grid>
     </Box>
   );
-}
+};
 
 export default SignupPage;

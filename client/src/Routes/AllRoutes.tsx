@@ -11,6 +11,7 @@ import AllProducts from "../Components/AdminPanel/AllProducts";
 import Trash from "../Components/AdminPanel/Trash";
 import FirstPage from "../Components/AdminPanel/FirstPage";
 import AllUsers from "../Components/AdminPanel/AllUsers";
+import SignupPage from "../Components/AdminPanel/SignupPage";
 
 const AllRoutes: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const AllRoutes: React.FC = () => {
       <Route element={<Trash />} path="/admin/trash"></Route>
       <Route element={<FirstPage />} path="/admin/dashboard"></Route>
       <Route element={<AllUsers />} path="/admin/users"></Route>
+      <Route element={<SignupPage />} path="/admin/createuser"></Route>
     </Routes>
   );
 };
