@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
-const CommanCarousel = ({ data, slidesToShow, top, autoplay }) => {
+const LabTestCarousel = ({ data, top }) => {
   const arrowRef = useRef(null);
   const [show, setShow] = useState(false);
 
@@ -24,11 +24,11 @@ const CommanCarousel = ({ data, slidesToShow, top, autoplay }) => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: slidesToShow,
+    slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: false,
-    autoplay: autoplay,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -61,8 +61,8 @@ const CommanCarousel = ({ data, slidesToShow, top, autoplay }) => {
       <Slider {...settings} ref={arrowRef}>
         {data.map((item, el) => {
           return (
-            <Box key={el} w="100%" pr="1.5rem">
-              <Image src={item} alt="Lab_test" w="100%" h="100%" />
+            <Box key={el} w="100%">
+              <Image src={item} alt="Lab_test" w="100%" h="50%" />
             </Box>
           );
         })}
@@ -72,16 +72,16 @@ const CommanCarousel = ({ data, slidesToShow, top, autoplay }) => {
           position="absolute"
           w="2.5rem"
           h="2.5rem"
-          bg="#30363c"
+          bg="#fff"
           cursor="pointer"
           borderRadius="50%"
           top={top}
-          left="-1%"
+          left="1%"
           align="center"
           justify="center"
           onClick={prevSlide}
         >
-          <IoIosArrowBack color="#ffff" />
+          <IoIosArrowBack color="#000" />
         </Flex>
       )}
 
@@ -89,19 +89,19 @@ const CommanCarousel = ({ data, slidesToShow, top, autoplay }) => {
         position="absolute"
         w="2.5rem"
         h="2.5rem"
-        bg="#30363c"
+        bg="#fff"
         cursor="pointer"
         borderRadius="50%"
         top={top}
-        right="0%"
+        right="1%"
         align="center"
         justify="center"
         onClick={nextSlide}
       >
-        <IoIosArrowForward color="#ffff" />
+        <IoIosArrowForward color="#000" />
       </Flex>
     </Box>
   );
 };
 
-export default CommanCarousel;
+export default LabTestCarousel;

@@ -11,7 +11,7 @@ interface IData {
 
 const data: IData[] = [
   { link: "/product/medicine", url: "", title: "Medicine" },
-  { link: "", url: "", title: "Lab Tests" },
+  { link: "/product/labtest", url: "", title: "Lab Tests" },
   { link: "/product/healthcare", url: "", title: "Healthcare" },
   { link: "", url: "", title: "Surgeries" },
   { link: "", url: "", title: "Health Blogs" },

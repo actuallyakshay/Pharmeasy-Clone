@@ -46,7 +46,7 @@ const LabTests = () => {
 
       {/* slider */}
 
-      <CommanCarousel data={data} slidesToShow={7} top="38%" />
+      <CommanCarousel data={data} slidesToShow={7} top="38%" autoplay={false} />
     </Box>
   );
 };
