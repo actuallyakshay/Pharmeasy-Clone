@@ -2,7 +2,7 @@ import { IProductReducer } from "../../@types/IProduct";
 import { IProductAction } from "./product.action";
 import { ProductTypes } from "./product.type";
 
-const initialState = {
+const initialState: IProductReducer = {
   productLoading: false,
   productError: false,
   productData: [],

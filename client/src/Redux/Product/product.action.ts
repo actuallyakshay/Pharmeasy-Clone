@@ -31,3 +31,4 @@ export const getProductData =
       })
       .catch((e) => dispatch({ type: ProductTypes.GET_PRODUCT_ERROR }));
   };
+

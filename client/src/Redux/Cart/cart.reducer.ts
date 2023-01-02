@@ -3,19 +3,19 @@ import { IProduct } from "../../@types/IProduct";
 import { ICartAction } from "./cart.action";
 import { ICartTypes } from "./cart.type";
 
-interface IState {
+export interface IState {
   cartLoading: boolean;
   cartData: ICart[];
   cartError: boolean;
 }
 
-const initState = {
+const initState: IState = {
   cartLoading: false,
   cartData: [],
   cartError: false,
 };
 
-export const cartReducer = (state: IState = initState, action: ICartAction) => {
+export const cartReducer = (state = initState, action: ICartAction) => {
   switch (action.type) {
     case ICartTypes.GET_CART_LOADING:
       return {

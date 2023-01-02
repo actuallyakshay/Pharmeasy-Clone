@@ -1,5 +1,5 @@
 import { Box, Grid } from "@chakra-ui/react";
-import React, { Dispatch, useEffect } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
 import CartItems from "../Components/Cart/CartItems/CartItems";
@@ -7,12 +7,13 @@ import CartTotal from "../Components/Cart/CartTotal/CartTotal";
 import Loader from "../organisms/Loader";
 import { useSelector } from "react-redux";
 import { AppState } from "../Redux/Store";
+import { IState } from "../Redux/Cart/cart.reducer";
 
 const Cart: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
   const { cartLoading, cartData } = useSelector(
     (state: AppState) => state.cartReducer
-  );
+  ) as IState;
 
   useEffect(() => {
     dispatch(getCartData());
@@ -32,7 +33,7 @@ const Cart: React.FC = () => {
     >
       <CartItems cartData={cartData} />
       <Box display={["none", "flex", "flex"]}>
-        <CartTotal />
+        <CartTotal cartData={cartData} />
       </Box>
     </Grid>
   );

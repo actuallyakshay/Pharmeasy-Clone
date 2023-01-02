@@ -5,7 +5,7 @@ import ProductHeading from "../../molecules/ProductHeading";
 
 import CommanCarousel from "../../molecules/CommanCarousel";
 
-const data = [
+const data: Array<string> = [
   "https://cms-contents.pharmeasy.in/homepage_top_categories_images/10dfe8c8aa7-HealthCheckups.jpg?dim=256x0",
   "https://cms-contents.pharmeasy.in/homepage_top_categories_images/6c5479c6c0c-Vitamins.jpg?dim=256x0",
   "https://cms-contents.pharmeasy.in/homepage_top_categories_images/64444851b5e-BoneHealth.jpg?dim=256x0",
@@ -18,7 +18,7 @@ const data = [
   "https://cms-contents.pharmeasy.in/homepage_top_categories_images/69588f95674-Diabetes.jpg?dim=256x0",
 ];
 
-const LabTests = () => {
+const LabTests: React.FC = () => {
   return (
     <Box w="93%" m="auto" mt="3rem" h="20rem">
       <Grid mb="2rem">
@@ -43,10 +43,12 @@ const LabTests = () => {
           />
         </Flex>
       </Grid>
-
-      {/* slider */}
-
-      <CommanCarousel data={data} slidesToShow={7} top="38%" autoplay={false} />
+      <CommanCarousel
+        data={data}
+        slidesToShow={7}
+        top="38%"
+        autoplay={"autoplay"}
+      />
     </Box>
   );
 };

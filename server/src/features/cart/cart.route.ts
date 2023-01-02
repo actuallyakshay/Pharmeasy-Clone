@@ -133,6 +133,7 @@ cartRouter.delete(
   "/:id",
   authMiddleWare,
   async (req: Request, res: Response) => {
+    console.log(req.params.id as string);
     try {
       let cart = (await Cart.findById({
         _id: req.params.id as string,
