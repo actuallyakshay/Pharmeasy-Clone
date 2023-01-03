@@ -66,10 +66,12 @@ const CreateUser: React.FC = () => {
         px="10"
       >
         <Box>
-          <Image
-            src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0"
-            w="90%"
-          />
+          <Link to="/">
+            <Image
+              src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0"
+              w="90%"
+            />
+          </Link>
         </Box>
         <HStack>
           <BsShieldLockFill color="green" fontSize={"30px"} />
