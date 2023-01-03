@@ -23,10 +23,29 @@ import { BsPerson, BsShieldLockFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
+interface IForm {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
 const CreateUser: React.FC = () => {
-  const dispatch = useDispatch();
   const toast = useToast();
-  const navigate = useNavigate();
+  const [signupform, setForm] = useState<IForm>({
+    name: "",
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const handleSignupForm = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setForm({ ...signupform, [e.target.name]: e.target.value });
+  };
 
   return (
     <Box>
@@ -93,8 +112,8 @@ const CreateUser: React.FC = () => {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  // value={signupform.name}
-                  // onChange={(e) => handleSignupForm(e)}
+                  value={signupform.name}
+                  onChange={(e) => handleSignupForm(e)}
                   fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
@@ -122,8 +141,8 @@ const CreateUser: React.FC = () => {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  // value={signupform.email}
-                  // onChange={(e) => handleSignupForm(e)}
+                  value={signupform.email}
+                  onChange={(e) => handleSignupForm(e)}
                   fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
@@ -151,8 +170,8 @@ const CreateUser: React.FC = () => {
               <InputGroup>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
-                  // value={signupform.password}
-                  // onChange={(e) => handleSignupForm(e)}
+                  value={signupform.password}
+                  onChange={(e) => handleSignupForm(e)}
                   fontWeight={"400"}
                   letterSpacing="1px"
                   type="password"
@@ -177,7 +196,7 @@ const CreateUser: React.FC = () => {
             </FormControl>
             <Select
               name="role"
-              // onChange={(e) => handleSignupForm(e)}
+              onChange={(e) => handleSignupForm(e)}
               placeholder="Select role"
             >
               <option value="ProductManager">Product Manager</option>
@@ -194,30 +213,29 @@ const CreateUser: React.FC = () => {
               fontSize="14px"
               color="white"
               leftIcon={<AiOutlineMail fontSize={"20px"} />}
-              // onClick={() => {
-              //   // console.log(signupform);
-              //   axios
-              //     .post(`${process.env.REACT_APP_URL}/user/signup`, signupform)
-              //     .then((res) => {
-              //       res.data == "Acc created"
-              //         ? toast({
-              //             title: "Account created successfully",
-              //             status: "success",
-              //             position: "top",
-              //             duration: 2000,
-              //             isClosable: true,
-              //           }) && navigate("/admin/login")
-              //         : toast({
-              //             title:
-              //               "This acc has been already register previously",
-              //             status: "error",
-              //             position: "top",
-              //             duration: 2000,
-              //             isClosable: true,
-              //           });
-              //     })
-              //     .catch((err) => console.log(err.message));
-              // }}
+              onClick={() => {
+                axios
+                  .post(`${process.env.REACT_APP_URL}/user/signup`, signupform)
+                  .then((res) => {
+                    res.data == "Acc created"
+                      ? toast({
+                          title: "Account created successfully",
+                          status: "success",
+                          position: "top",
+                          duration: 2000,
+                          isClosable: true,
+                        })
+                      : toast({
+                          title:
+                            "This acc has been already register previously",
+                          status: "error",
+                          position: "top",
+                          duration: 2000,
+                          isClosable: true,
+                        });
+                  })
+                  .catch((err) => console.log(err.message));
+              }}
             >
               {" "}
               Create User
