@@ -23,7 +23,7 @@ import { BsPerson, BsShieldLockFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const SignupPage: React.FC = () => {
+const CreateUser: React.FC = () => {
   const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
@@ -240,4 +240,4 @@ const SignupPage: React.FC = () => {
   );
 };
 
-export default SignupPage;
+export default CreateUser;
