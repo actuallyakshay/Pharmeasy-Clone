@@ -101,10 +101,7 @@ const LoginPage: React.FC = () => {
         px="10"
       >
         <Box _hover={{ cursor: "pointer" }}>
-          <Image
-            src="https://res.cloudinary.com/dhxtxmw5n/image/upload/v1671389264/logo_bj5fla.png"
-            w="30%"
-          />
+          <Image src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0" />
         </Box>
         <HStack>
           <Text
@@ -112,7 +109,7 @@ const LoginPage: React.FC = () => {
             color="blackAlpha.600"
             display={{ base: "none", md: "flex" }}
           >
-            1 0 0 % {"  "} S E C U R E
+           🔐 1 0 0 % {"  "} S E C U R E
           </Text>
         </HStack>
       </Flex>
