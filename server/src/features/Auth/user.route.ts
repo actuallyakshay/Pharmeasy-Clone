@@ -64,11 +64,7 @@ usersRouter.post(
         } else {
           let match: boolean = await bcrypt.compare(password, user.password);
           if (match) {
-            let token: string = jwt.sign(
-              { _id: user._id, name: user.name, role: user.role },
-              "17147714"
-            );
-            return res.status(200).send({ token });
+            return res.status(200).send({ role: user.role, name: user.name });
           } else {
             return res.status(404).send("invalid Password");
           }
