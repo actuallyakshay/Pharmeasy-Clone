@@ -12,6 +12,7 @@ import Trash from "../Components/AdminPanel/Trash";
 import FirstPage from "../Components/AdminPanel/FirstPage";
 import AllUsers from "../Components/AdminPanel/AllUsers";
 import SignupPage from "../Components/AdminPanel/SignupPage";
+import AdminPrivateRoute from "./AdminPrivateRoute";
 
 const AllRoutes: React.FC = () => {
   return (
@@ -23,11 +24,46 @@ const AllRoutes: React.FC = () => {
       <Route element={<SingleProductPage />} path="/product/:id"></Route>
       <Route element={<AdminSignup />} path="/admin/signup"></Route>
       <Route element={<LoginPage />} path="/admin/login"></Route>
-      <Route element={<AllProducts />} path="/admin/products"></Route>
-      <Route element={<Trash />} path="/admin/trash"></Route>
-      <Route element={<FirstPage />} path="/admin/dashboard"></Route>
-      <Route element={<AllUsers />} path="/admin/users"></Route>
-      <Route element={<SignupPage />} path="/admin/createuser"></Route>
+      <Route
+        element={
+          <AdminPrivateRoute>
+            <AllProducts />
+          </AdminPrivateRoute>
+        }
+        path="/admin/products"
+      ></Route>
+      <Route
+        element={
+          <AdminPrivateRoute>
+            <Trash />
+          </AdminPrivateRoute>
+        }
+        path="/admin/trash"
+      ></Route>
+      <Route
+        element={
+          <AdminPrivateRoute>
+            <FirstPage />
+          </AdminPrivateRoute>
+        }
+        path="/admin/dashboard"
+      ></Route>
+      <Route
+        element={
+          <AdminPrivateRoute>
+            <AllUsers />
+          </AdminPrivateRoute>
+        }
+        path="/admin/users"
+      ></Route>
+      <Route
+        element={
+          <AdminPrivateRoute>
+            <SignupPage />
+          </AdminPrivateRoute>
+        }
+        path="/admin/createuser"
+      ></Route>
     </Routes>
   );
 };

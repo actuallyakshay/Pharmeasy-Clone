@@ -26,6 +26,8 @@ const AllProducts: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const toast = useToast();
 
+  const role: string = localStorage.getItem("role") || "";
+
   useEffect(() => {
     getalldata();
   }, [page]);
@@ -54,12 +56,12 @@ const AllProducts: React.FC = () => {
               <Th textAlign={"center"}>View prod.</Th>
               <Th
                 textAlign={"center"}
-                // display={role == "ProductManager" ? "" : "none"}
+                display={role == "ProductManager" ? "" : "none"}
               >
                 Update prod.
               </Th>
               <Th
-                // display={role == "ProductManager" ? "" : "none"}
+                display={role == "ProductManager" ? "" : "none"}
                 textAlign={"center"}
               >
                 Delete prod.
@@ -82,13 +84,13 @@ const AllProducts: React.FC = () => {
                     <ViewProduct id={el._id} />
                   </Td>
                   <Td
-                    // display={role == "ProductManager" ? "" : "none"}
+                    display={role == "ProductManager" ? "" : "none"}
                     textAlign={"center"}
                   >
                     <UpdateProduct id={el._id} getalldata={getalldata} />
                   </Td>
                   <Td
-                    // display={role == "ProductManager" ? "" : "none"}
+                    display={role == "ProductManager" ? "" : "none"}
                     textAlign={"center"}
                   >
                     <Button
