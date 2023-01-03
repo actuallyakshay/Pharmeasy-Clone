@@ -20,7 +20,7 @@ import { Dispatch } from "redux";
 import { getLogin, IAuthAction } from "../../Redux/Auth/auth.actions";
 import { useSelector } from "react-redux";
 import { AppState } from "../../Redux/Store";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 interface IForm {
   email: string;
@@ -34,6 +34,7 @@ const LoginPage: React.FC = () => {
   });
   const toast = useToast();
   const dispatch: Dispatch<any> = useDispatch();
+  const navigate = useNavigate();
 
   const adminAuth = useSelector(
     (state: AppState) => state?.authReducer?.adminAuth
@@ -100,11 +101,8 @@ const LoginPage: React.FC = () => {
         py="3"
         px="10"
       >
-        <Box _hover={{ cursor: "pointer" }}>
-          <Image
-            src="https://res.cloudinary.com/dhxtxmw5n/image/upload/v1671389264/logo_bj5fla.png"
-            w="30%"
-          />
+        <Box onClick={() => navigate("/")} _hover={{ cursor: "pointer" }}>
+          <Image src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0" />
         </Box>
         <HStack>
           <Text
@@ -112,7 +110,7 @@ const LoginPage: React.FC = () => {
             color="blackAlpha.600"
             display={{ base: "none", md: "flex" }}
           >
-            1 0 0 % {"  "} S E C U R E
+            🔐 1 0 0 % {"  "} S E C U R E
           </Text>
         </HStack>
       </Flex>

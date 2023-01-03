@@ -72,7 +72,12 @@ export const AdminDashboard: React.FC = () => {
           >
             Trash
           </Link>
-          <Link>Create User</Link>
+          <Link
+            display={role !== "Admin" ? "none" : "flex"}
+            onClick={() => navigate("/admin/createuser")}
+          >
+            Create User
+          </Link>
         </HStack>
         <HStack display={{ base: "none", md: "flex" }}>
           <Avatar name={name} />
