@@ -1,8 +1,41 @@
 import React from "react";
-import { Box, Button, Flex, Grid, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Image,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { FaRupeeSign } from "react-icons/fa";
+import { IProduct } from "../../@types/IProduct";
+import { useDispatch } from "react-redux";
+import { addDataInCart } from "../../Redux/Cart/cart.action";
+import { Dispatch } from "redux";
 
-const TestCard: React.FC = () => {
+interface IProps {
+  data: IProduct;
+}
+
+const TestCard: React.FC<IProps> = ({ data }) => {
+  const toast = useToast();
+  const dispatch: Dispatch<any> = useDispatch();
+  const AddToCart = (id: string) => {
+    let body = {
+      product: id,
+      quantity: 1,
+    };
+    dispatch(addDataInCart(body));
+    toast({
+      title: "Product Added Successfully",
+      status: "success",
+      position: "top",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
   return (
     <Box p="1.5rem" border="1px solid #dfe3e6" borderRadius="10px" mb="1rem">
       <Grid
@@ -25,7 +58,7 @@ const TestCard: React.FC = () => {
               color="#4f585e"
               fontWeight="600"
             >
-              Cardiac Risk Markers
+              {data?.name}
             </Text>
           </Flex>
           <Box pt="1rem">
@@ -57,7 +90,7 @@ const TestCard: React.FC = () => {
                 fontWeight="600"
                 ml="-.4rem"
               >
-                <span>300</span>
+                <span> {data?.price1}</span>
               </Text>
               <Text
                 fontSize="12px"
@@ -71,7 +104,13 @@ const TestCard: React.FC = () => {
           </Box>
         </Box>
         <Box>
-          <Button w="full" color="white" bg="#10847e">
+          <Button
+            w="full"
+            color="white"
+            bg="#10847e"
+            _hover={{ backgroundColor: "#10847e" }}
+            onClick={() => AddToCart(data?._id)}
+          >
             Select
           </Button>
         </Box>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import LabTestCarousel from "../../molecules/LabTestCarousel";
-import LabCard from "../../molecules/LabCard";
+import LabCard from "./LabCard";
 
 // carousel data
 
