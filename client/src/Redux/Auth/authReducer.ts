@@ -9,7 +9,7 @@ const iState: IAuth = {
   userLoading: false,
   userOTP: "",
   token,
-  userAuth: false,
+  userAuth: !!token,
 };
 
 export const authReducer = (state = iState, action: IAuthAction) => {
