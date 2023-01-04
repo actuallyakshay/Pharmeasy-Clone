@@ -1,10 +1,16 @@
+import axios from "axios";
 import { Dispatch } from "redux";
-import { IAuth } from "../../@types/IAuth";
 import { IAuthtypes } from "./auth.type";
+
+interface IOtp {
+  otp: string | number;
+  token: string;
+  message: string;
+}
 
 export interface IAuthAction {
   type: IAuthtypes;
-  payload?: boolean;
+  payload?: boolean | IOtp | any;
 }
 
 export const getLogin =
@@ -14,4 +20,8 @@ export const getLogin =
 
 export const adminLogout = () => (dispatch: Dispatch<IAuthAction>) => {
   dispatch({ type: IAuthtypes.GET_ADMIN_LOGOUT });
+};
+
+export const getUserLogout = () => (dispatch: Dispatch<IAuthAction>) => {
+  dispatch({ type: IAuthtypes.GET_USER_LOGOUT });
 };

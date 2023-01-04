@@ -4,8 +4,13 @@ import { Router } from "express";
 import { IUser, User } from "./user.model";
 import jwt, { sign, verify, Secret, JwtPayload } from "jsonwebtoken";
 import bcrypt, { compare, hash } from "bcrypt";
+import { create } from "domain";
 
 const usersRouter: IRouter = Router();
+
+const createOTP = () => {
+  return Math.floor(Math.random() * 10000 + 1);
+};
 
 usersRouter.get(
   "/",
@@ -48,14 +53,18 @@ usersRouter.post(
             { _id: user._id, phoneNumber: Number(user.phoneNumber) },
             "17147714"
           );
-          return res.send({ token: token, message: "User already Exist" });
+          return res.send({
+            token: token,
+            message: "User already Exist",
+            otp: createOTP(),
+          });
         } else {
           let temp: IUser | null = await User.create({
             phoneNumber,
             role: "Guest",
           });
           const token1: string = jwt.sign({ _id: temp._id }, "17147714");
-          return res.send({ token: token1 });
+          return res.send({ token: token1, otp: createOTP() });
         }
       } else if (email) {
         let user: IUser | null = await User.findOne({ email });
