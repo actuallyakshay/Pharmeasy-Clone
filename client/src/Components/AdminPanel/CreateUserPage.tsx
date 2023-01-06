@@ -23,24 +23,32 @@ import { BsPerson, BsShieldLockFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-function SignupPage() {
-  const dispatch = useDispatch();
-  const toast = useToast();
-  const navigate = useNavigate();
+interface IForm {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}
 
-  const [signupform, setSignup] = useState({
+const CreateUser: React.FC = () => {
+  const toast = useToast();
+  const [signupform, setForm] = useState<IForm>({
     name: "",
-    pinCode: "",
     email: "",
+    password: "",
     role: "",
   });
 
-  const handleSignupForm = (e) => {
-    setSignup({ ...signupform, [e.target.name]: e.target.value });
+  const handleSignupForm = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setForm({ ...signupform, [e.target.name]: e.target.value });
   };
 
   return (
-    <Box position={"realtive"}>
+    <Box>
       <Box position={"absolute"} w="fit-content" opacity={0.5} zIndex={-1}>
         <Image
           m="auto"
@@ -58,10 +66,12 @@ function SignupPage() {
         px="10"
       >
         <Box>
-          <Image
-            src="https://res.cloudinary.com/dhxtxmw5n/image/upload/v1671389264/logo_bj5fla.png"
-            w="30%"
-          />
+          <Link to="/">
+            <Image
+              src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0"
+              w="90%"
+            />
+          </Link>
         </Box>
         <HStack>
           <BsShieldLockFill color="green" fontSize={"30px"} />
@@ -84,8 +94,8 @@ function SignupPage() {
       >
         <Flex h="full" display={["none", "none", "flex", "flex"]}>
           <Image
-            src="https://i.ibb.co/NsqbWyn/undraw-step-to-the-sun-nxqq.png"
-            w="70%"
+            src="https://user-images.githubusercontent.com/107462720/210168012-59f6b109-27ab-4bdf-9893-0d8fa4c57b8b.png"
+            w="90%"
             m="auto"
             alignContent={"end"}
             opacity=".96"
@@ -106,25 +116,24 @@ function SignupPage() {
                 <Input
                   value={signupform.name}
                   onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="Enter your name"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="name"
                 />
               </InputGroup>
@@ -136,25 +145,24 @@ function SignupPage() {
                 <Input
                   value={signupform.email}
                   onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="text"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="your-email@example.com"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="email"
                 />
               </InputGroup>
@@ -166,25 +174,24 @@ function SignupPage() {
                 <Input
                   value={signupform.password}
                   onChange={(e) => handleSignupForm(e)}
-                  fontWeight={"600"}
+                  fontWeight={"400"}
                   letterSpacing="1px"
                   type="password"
                   outline="none"
                   flex="1"
                   border={"none"}
-                  borderBottom={"1px solid #ff3e6c"}
+                  borderBottom={"1px solid teal"}
                   w="full"
                   borderRadius={0}
                   focusBorderColor="none"
                   placeholder="Enter your name"
-                  _hover={{ borderBottom: "1px solid #ff3e6c" }}
+                  _hover={{ borderBottom: "1px solid teal" }}
                   _placeholder={{
                     opacity: 0.4,
                     color: "gray",
                     letterSpacing: "0",
-                    fontWeight: "400",
+                    fontWeight: "300",
                   }}
-                  onFocus={{ border: "0", borderBottom: "1px solid #ff3e6c" }}
                   name="password"
                 />
               </InputGroup>
@@ -198,18 +205,17 @@ function SignupPage() {
               <option value="Doctor">Doctor</option>
             </Select>
             <Button
-              bgColor="rgba(255, 49, 109, 0.7)"
+              bgColor="teal"
               w="full"
               size="sm"
               py="4"
-              _hover={{ bgColor: "rgba(255, 49, 109, 0.7)" }}
+              _hover={{ bgColor: "teal" }}
               letterSpacing={"1.3px"}
               fontWeight="500"
               fontSize="14px"
               color="white"
               leftIcon={<AiOutlineMail fontSize={"20px"} />}
               onClick={() => {
-                console.log(signupform);
                 axios
                   .post(`${process.env.REACT_APP_URL}/user/signup`, signupform)
                   .then((res) => {
@@ -220,7 +226,7 @@ function SignupPage() {
                           position: "top",
                           duration: 2000,
                           isClosable: true,
-                        }) && navigate("/login")
+                        })
                       : toast({
                           title:
                             "This acc has been already register previously",
@@ -242,7 +248,7 @@ function SignupPage() {
                 as="i"
                 _hover={{ textDecoration: "underline" }}
                 fontSize="12px"
-                color="rgba(255, 49, 109, 0.7)"
+                color="teal"
               >
                 GO TO DASHBOARD{" "}
               </Text>
@@ -252,6 +258,6 @@ function SignupPage() {
       </Grid>
     </Box>
   );
-}
+};
 
-export default SignupPage;
+export default CreateUser;

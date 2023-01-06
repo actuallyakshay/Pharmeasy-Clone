@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -11,9 +12,77 @@ import {
   Input,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { getLogin, IAuthAction } from "../../Redux/Auth/auth.actions";
+import { useSelector } from "react-redux";
+import { AppState } from "../../Redux/Store";
+import { Navigate, useNavigate } from "react-router-dom";
+
+interface IForm {
+  email: string;
+  password: string;
+}
 
 const LoginPage: React.FC = () => {
+  const [form, setForm] = useState<IForm>({
+    email: "",
+    password: "",
+  });
+  const toast = useToast();
+  const dispatch: Dispatch<any> = useDispatch();
+  const navigate = useNavigate();
+
+  const adminAuth = useSelector(
+    (state: AppState) => state?.authReducer?.adminAuth
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  if (adminAuth) {
+    return <Navigate to="/admin/products" />;
+  }
+  const handleSubmit = () => {
+    axios
+      .post(`${process.env.REACT_APP_URL}/user/login`, form)
+      .then((res) => {
+        if (res.data) {
+          localStorage.setItem("role", res.data.role);
+          localStorage.setItem("name", res.data.name);
+          dispatch(getLogin(true));
+          toast({
+            title: `Successfully login as ${res.data.role}`,
+            status: "success",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: `You are not authorised to login this website`,
+            status: "error",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        }
+      })
+      .catch((e) => {
+        toast({
+          title: `You are not authorised to login this website`,
+          status: "error",
+          position: "top",
+          duration: 2000,
+          isClosable: true,
+        });
+      });
+  };
+
   return (
     <Box position={"relative"}>
       <Box position={"absolute"} w="fit-content" opacity={0.7}>
@@ -32,11 +101,8 @@ const LoginPage: React.FC = () => {
         py="3"
         px="10"
       >
-        <Box _hover={{ cursor: "pointer" }}>
-          <Image
-            src="https://res.cloudinary.com/dhxtxmw5n/image/upload/v1671389264/logo_bj5fla.png"
-            w="30%"
-          />
+        <Box onClick={() => navigate("/")} _hover={{ cursor: "pointer" }}>
+          <Image src="https://assets.pharmeasy.in/apothecary/images/logo_big.svg?dim=256x0" />
         </Box>
         <HStack>
           <Text
@@ -44,7 +110,7 @@ const LoginPage: React.FC = () => {
             color="blackAlpha.600"
             display={{ base: "none", md: "flex" }}
           >
-            1 0 0 % {"  "} S E C U R E
+            🔐 1 0 0 % {"  "} S E C U R E
           </Text>
         </HStack>
       </Flex>
@@ -76,6 +142,9 @@ const LoginPage: React.FC = () => {
               <Input
                 placeholder="your-email@example.com"
                 fontWeight={"600"}
+                value={form.email}
+                name="email"
+                onChange={(e) => handleChange(e)}
                 letterSpacing="1px"
                 type="text"
                 outline="none"
@@ -92,15 +161,16 @@ const LoginPage: React.FC = () => {
                   letterSpacing: "0",
                   fontWeight: "400",
                 }}
-                name="email"
               />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <Input
+                onChange={(e) => handleChange(e)}
                 fontWeight={"600"}
                 letterSpacing="1px"
                 type="password"
+                name="password"
                 outline="none"
                 flex="1"
                 border={"none"}
@@ -116,7 +186,6 @@ const LoginPage: React.FC = () => {
                   letterSpacing: "0",
                   fontWeight: "400",
                 }}
-                name="password"
               />
             </FormControl>
 
@@ -131,6 +200,7 @@ const LoginPage: React.FC = () => {
                 fontWeight="500"
                 fontSize="16px"
                 color="white"
+                onClick={() => handleSubmit()}
               >
                 Login
               </Button>
