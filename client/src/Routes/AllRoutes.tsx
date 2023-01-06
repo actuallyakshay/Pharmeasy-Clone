@@ -21,14 +21,11 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import CreateUser from "../Components/AdminPanel/CreateUserPage";
 import UserPrivateRoute from "./UserPrivateRoute";
 
-
 const AllRoutes: React.FC = () => {
   return (
     <Routes>
       <Route element={<LandingPage />} path="/"></Route>
-
       <Route element={<Medicine />} path="/product/medicine"></Route>
-      <Route element={<Cart />} path="/cart"></Route>
       <Route element={<Healthcare />} path="/product/healthcare"></Route>
       <Route element={<LabTestPage />} path="/product/labtest"></Route>
       <Route element={<AllTest />} path="/product/labtest/alltest"></Route>
@@ -37,15 +34,6 @@ const AllRoutes: React.FC = () => {
         path="/product/labtest/health-care-packages"
       ></Route>
       <Route element={<SingleProductPage />} path="/product/:id"></Route>
-
-      <Route
-        element={
-          <UserPrivateRoute>
-            <Medicine />
-          </UserPrivateRoute>
-        }
-        path="/product/medicine"
-      ></Route>
       <Route
         element={
           <UserPrivateRoute>
@@ -54,23 +42,6 @@ const AllRoutes: React.FC = () => {
         }
         path="/cart"
       ></Route>
-      <Route
-        element={
-          <UserPrivateRoute>
-            <Healthcare />
-          </UserPrivateRoute>
-        }
-        path="/product/healthcare"
-      ></Route>
-      <Route
-        element={
-          <UserPrivateRoute>
-            <SingleProductPage />
-          </UserPrivateRoute>
-        }
-        path="/product/:id"
-      ></Route>
-
       <Route element={<AdminSignup />} path="/admin/signup"></Route>
       <Route element={<LoginPage />} path="/admin/login"></Route>
       <Route

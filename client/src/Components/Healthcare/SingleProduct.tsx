@@ -1,7 +1,7 @@
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/layout";
-import { useToast } from "@chakra-ui/react";
-import React from "react";
+import { Button, useToast } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
 import { BsHeart } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
@@ -9,6 +9,7 @@ import { IProduct } from "../../@types/IProduct";
 import "../../index.css";
 import { addDataInCart } from "../../Redux/Cart/cart.action";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface IProps {
   data: IProduct;
@@ -18,20 +19,51 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
   const dispatch: Dispatch<any> = useDispatch();
   const toast = useToast();
   const navigate: NavigateFunction = useNavigate();
+  const [ref, setRef] = useState<string>("");
 
   const handleAddToCart = (id: string) => {
     let body = {
       product: id,
       quantity: 1,
     };
-    dispatch(addDataInCart(body));
-    toast({
-      title: "Product Added Successfully",
-      status: "success",
-      position: "top",
-      duration: 2000,
-      isClosable: true,
-    });
+    let token: string | null = localStorage.getItem("token");
+
+    if (token == null || undefined) {
+      toast({
+        title: "Please login first",
+        status: "error",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+    axios
+      .post(`${process.env.REACT_APP_URL}/cart`, body, {
+        headers: {
+          token: token,
+        },
+      })
+      .then((res) => {
+        if (res.data == "Type is missing") {
+          toast({
+            title: "This Product already present in the cart",
+            status: "warning",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Product Added Successfully",
+            status: "success",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+          setRef(id);
+        }
+      });
   };
 
   return (
@@ -111,15 +143,17 @@ const SingleProduct: React.FC<IProps> = ({ data }) => {
           {" "}
           ₹{data.price1}.00
         </Text>
-        <Box
+        <Button
           _hover={{ cursor: "pointer" }}
           fontWeight={"500"}
           fontSize="15px"
           color="#10847e"
           onClick={() => handleAddToCart(data?._id)}
+          variant="ghost"
+          disabled={ref == data._id ? true : false}
         >
           ADD +
-        </Box>
+        </Button>
       </HStack>
     </VStack>
   );

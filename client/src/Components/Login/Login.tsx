@@ -81,6 +81,7 @@ const Login: React.FC = () => {
         isClosable: true,
       });
       onClose();
+      window.location.reload();
     } else {
       toast({
         title: `Please enter correct otp`,
