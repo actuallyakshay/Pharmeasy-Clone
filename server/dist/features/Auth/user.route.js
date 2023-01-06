@@ -18,13 +18,27 @@ const user_model_1 = require("./user.model");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const usersRouter = (0, express_1.Router)();
-const Secretkey = String(process.env.SECRET_KEY);
+const createOTP = () => {
+    return Math.floor(Math.random() * 10000 + 1);
+};
 usersRouter.get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return res.send("hello from user side");
+        let users = yield user_model_1.User.find();
+        return res.status(200).send(users);
     }
     catch (error) {
         return next(http_errors_1.default.InternalServerError);
+    }
+}));
+usersRouter.get("/:id", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let user = yield user_model_1.User.findById({
+            _id: req.params.id,
+        });
+        return res.status(200).send(user);
+    }
+    catch (error) {
+        return res.status(501).send(error);
     }
 }));
 usersRouter.post("/login", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -36,16 +50,20 @@ usersRouter.post("/login", (req, res, next) => __awaiter(void 0, void 0, void 0,
                 phoneNumber: Number(phoneNumber),
             });
             if (user) {
-                let token = jsonwebtoken_1.default.sign({ _id: user._id, phoneNumber: Number(user.phoneNumber) }, Secretkey);
-                return res.send({ token: token, message: "User already Exist" });
+                let token = jsonwebtoken_1.default.sign({ _id: user._id, phoneNumber: Number(user.phoneNumber) }, "17147714");
+                return res.send({
+                    token: token,
+                    message: "User already Exist",
+                    otp: createOTP(),
+                });
             }
             else {
                 let temp = yield user_model_1.User.create({
                     phoneNumber,
                     role: "Guest",
                 });
-                const token1 = jsonwebtoken_1.default.sign({ _id: temp._id }, Secretkey);
-                return res.send({ token: token1 });
+                const token1 = jsonwebtoken_1.default.sign({ _id: temp._id }, "17147714");
+                return res.send({ token: token1, otp: createOTP() });
             }
         }
         else if (email) {
@@ -56,8 +74,7 @@ usersRouter.post("/login", (req, res, next) => __awaiter(void 0, void 0, void 0,
             else {
                 let match = yield bcrypt_1.default.compare(password, user.password);
                 if (match) {
-                    let token = jsonwebtoken_1.default.sign({ _id: user._id, name: user.name, role: user.role }, Secretkey);
-                    return res.status(200).send({ token });
+                    return res.status(200).send({ role: user.role, name: user.name });
                 }
                 else {
                     return res.status(404).send("invalid Password");
