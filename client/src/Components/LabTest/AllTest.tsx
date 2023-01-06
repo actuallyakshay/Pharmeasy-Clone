@@ -10,7 +10,7 @@ const AllTest = () => {
   const [test, setTest] = useState<IProduct[]>([]);
   const getTest = () => {
     axios
-      .get(`http://localhost:8080/product?category=labtest&limit=30`)
+      .get(`${process.env.REACT_APP_URL}/product?category=labtest&limit=30`)
       .then((res) => setTest(res.data))
       .catch((error) => console.log("Error", error));
   };
@@ -26,7 +26,7 @@ const AllTest = () => {
     >
       <Grid gridTemplateColumns={{ base: "1fr", md: "1fr .5fr" }} gap="6rem">
         <Box>
-          {test.map((item, index) => {
+          {test?.map((item, index) => {
             return <TestCard key={index} data={item} />;
           })}
         </Box>

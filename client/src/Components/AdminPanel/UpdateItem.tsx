@@ -47,17 +47,19 @@ const UpdateProduct: React.FC<IProps> = ({ id, getalldata }) => {
   };
 
   const handleUpdate = (update: IUpdate, id: string) => {
-    axios.patch(`http://localhost:8080/products/${id}`, update).then((res) => {
-      getalldata();
-      toast({
-        title: "Hey! Akshay ❤️",
-        description: `Product has been updated !! 💛`,
-        status: "success",
-        position: "top",
-        duration: 2000,
-        isClosable: true,
+    axios
+      .patch(`${process.env.REACT_APP_URL}/product/${id}`, update)
+      .then((res) => {
+        getalldata();
+        toast({
+          title: "Hey! Akshay ❤️",
+          description: `Product has been updated !! 💛`,
+          status: "success",
+          position: "top",
+          duration: 2000,
+          isClosable: true,
+        });
       });
-    });
   };
 
   return (

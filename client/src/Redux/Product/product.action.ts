@@ -21,7 +21,7 @@ export const getProductData =
   (dispatch: Dispatch<IProductAction>) => {
     axios
       .get(
-        `http://localhost:8080/product?category=${category}&firstLetter=${firstLetter}&priceSort=${priceSort}&priceArr=${priceArr}&offSort=${offSort}&offArr=${offArr}&page=${page}&limit=30`
+        `${process.env.REACT_APP_URL}/product?category=${category}&firstLetter=${firstLetter}&priceSort=${priceSort}&priceArr=${priceArr}&offSort=${offSort}&offArr=${offArr}&page=${page}&limit=30`
       )
       .then((res) => {
         dispatch({
@@ -31,4 +31,3 @@ export const getProductData =
       })
       .catch((e) => dispatch({ type: ProductTypes.GET_PRODUCT_ERROR }));
   };
-

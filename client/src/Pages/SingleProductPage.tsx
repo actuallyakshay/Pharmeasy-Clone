@@ -15,7 +15,7 @@ const SingleProductPage: React.FC = () => {
 
   const getSingleProduct = () => {
     axios
-      .get(`http://localhost:8080/product/${id.id}`)
+      .get(`${process.env.REACT_APP_URL}/product/${id.id}`)
       .then((res) => {
         setProduct(res.data);
       })
@@ -28,7 +28,7 @@ const SingleProductPage: React.FC = () => {
 
   const getSimilerProducts = () => {
     axios
-      .get(`http://localhost:8080/product?category=${category}&limit=12`)
+      .get(`${process.env.REACT_APP_URL}/product?category=${category}&limit=12`)
       .then((res) => {
         setSimilerProd(res.data);
       })
