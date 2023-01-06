@@ -14,7 +14,6 @@ const AllTest = () => {
       .then((res) => setTest(res.data))
       .catch((error) => console.log("Error", error));
   };
-
   useEffect(() => {
     getTest();
   }, []);
