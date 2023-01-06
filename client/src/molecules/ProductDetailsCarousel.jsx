@@ -8,7 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
-import "../index.css"
+import "../index.css";
+import { Link } from "react-router-dom";
 
 const ProductDetailsCarousel = ({ data, slidesToShow, top, bg = "" }) => {
   const arrowRef = useRef(null);
@@ -62,93 +63,95 @@ const ProductDetailsCarousel = ({ data, slidesToShow, top, bg = "" }) => {
       <Slider {...settings} ref={arrowRef}>
         {data.map((item, el) => {
           return (
-            <Box w="100%" pr="1.5rem" key={el}>
-              <Box>
-                <Flex
-                  px="1.2rem"
-                  py="2rem"
-                  _hover={{
-                    boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-                    borderRadius: "10px",
-                  }}
-                  borderRadius="10px"
-                  border="1px solid #e6ebf4"
-                  justify="center"
-                  align="center"
-                  w="100%"
-                  h="12rem"
-                  bg={bg}
-                >
-                  <Image
-                    src={item.src}
-                    alt=""
-                    boxSize="auto"
-                    maxW="100%"
-                    maxH="100%"
-                  />
-                </Flex>
-                <Box my="1rem">
-                  {/* <Title title={item.title} color="#30363c" center="start" /> */}
-                  <Text
-                    fontSize="14px"
-                    fontWeight="500"
-                    fontFamily="poppins"
-                    color="#30363c"
-                    textAlign="start"
+            <Link to="/product/healthcare">
+              <Box w="100%" pr="1.5rem" key={el}>
+                <Box>
+                  <Flex
+                    px="1.2rem"
+                    py="2rem"
+                    _hover={{
+                      boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                      borderRadius: "10px",
+                    }}
+                    borderRadius="10px"
+                    border="1px solid #e6ebf4"
+                    justify="center"
+                    align="center"
+                    w="100%"
+                    h="12rem"
+                    bg={bg}
                   >
-                    {item.title}
-                  </Text>
-                </Box>
-                <Flex mt=".5rem" align="center">
-                  <Text
-                    color="#8897a2"
-                    fontSize="14px"
-                    fontWeight="500"
-                    fontFamily=""
-                    textTransform="uppercase"
-                  >
-                    mrp
-                  </Text>
-                  <BiRupee color="#8897a2" />
-                  <Text
-                    color="#8897a2"
-                    fontSize="14px"
-                    fontWeight="500"
-                    textTransform="uppercase"
-                  >
-                    {item.mrp}
-                  </Text>
-                </Flex>
-                {item.price > 0 ? (
-                  <Flex mt=".3rem" align="center">
-                    <BiRupee color="#30363c" fontWeight="800" />
+                    <Image
+                      src={item.src}
+                      alt=""
+                      boxSize="auto"
+                      maxW="100%"
+                      maxH="100%"
+                    />
+                  </Flex>
+                  <Box my="1rem">
+                    {/* <Title title={item.title} color="#30363c" center="start" /> */}
                     <Text
-                      mt="-.2rem"
-                      color="#30363c"
-                      fontSize=""
-                      fontWeight="700"
-                      fontFamily=""
-                      textTransform="uppercase"
-                      mr=".5rem"
-                    >
-                      {item?.price}
-                    </Text>
-                    <Text
-                      className="off"
-                      color="white"
-                      fontSize="9px"
+                      fontSize="14px"
                       fontWeight="500"
                       fontFamily="poppins"
+                      color="#30363c"
+                      textAlign="start"
+                    >
+                      {item.title}
+                    </Text>
+                  </Box>
+                  <Flex mt=".5rem" align="center">
+                    <Text
+                      color="#8897a2"
+                      fontSize="14px"
+                      fontWeight="500"
+                      fontFamily=""
                       textTransform="uppercase"
                     >
-                      {item.price > 0 ? `${item.off} % OFF` : " "}
+                      mrp
+                    </Text>
+                    <BiRupee color="#8897a2" />
+                    <Text
+                      color="#8897a2"
+                      fontSize="14px"
+                      fontWeight="500"
+                      textTransform="uppercase"
+                    >
+                      {item.mrp}
                     </Text>
                   </Flex>
-                ) : (
-                  " "
-                )}
+                  {item.price > 0 ? (
+                    <Flex mt=".3rem" align="center">
+                      <BiRupee color="#30363c" fontWeight="800" />
+                      <Text
+                        mt="-.2rem"
+                        color="#30363c"
+                        fontSize=""
+                        fontWeight="700"
+                        fontFamily=""
+                        textTransform="uppercase"
+                        mr=".5rem"
+                      >
+                        {item?.price}
+                      </Text>
+                      <Text
+                        className="off"
+                        color="white"
+                        fontSize="9px"
+                        fontWeight="500"
+                        fontFamily="poppins"
+                        textTransform="uppercase"
+                      >
+                        {item.price > 0 ? `${item.off} % OFF` : " "}
+                      </Text>
+                    </Flex>
+                  ) : (
+                    " "
+                  )}
+                </Box>
               </Box>
-            </Box>
+            </Link>
           );
         })}
       </Slider>

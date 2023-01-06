@@ -9,11 +9,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Title from "./Title";
-
-
+import { Link } from "react-router-dom";
 
 const CardCarousel = ({ data, slidesToShow, top }) => {
-
   const arrowRef = useRef(null);
   const [show, setShow] = useState(false);
 
@@ -66,25 +64,27 @@ const CardCarousel = ({ data, slidesToShow, top }) => {
       <Slider {...settings} ref={arrowRef}>
         {data?.map((item, el) => {
           return (
-            <Box key={el} w="100%" pr="1.5rem">
-              <Box>
-                <Flex
-                  px="1.2rem"
-                  py="2rem"
-                  _hover={{
-                    boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-                    borderRadius: "10px",
-                  }}
-                  borderRadius="10px"
-                  border="1px solid #e6ebf4"
-                >
-                  <Image src={item.src} alt="" w="100%" h="100%" />
-                </Flex>
-                <Box my="1rem">
-                  <Title title={item.category} color="#30363c" />
+            <Link to="/product/healthcare">
+              <Box key={el} w="100%" pr="1.5rem">
+                <Box>
+                  <Flex
+                    px="1.2rem"
+                    py="2rem"
+                    _hover={{
+                      boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                      borderRadius: "10px",
+                    }}
+                    borderRadius="10px"
+                    border="1px solid #e6ebf4"
+                  >
+                    <Image src={item.src} alt="" w="100%" h="100%" />
+                  </Flex>
+                  <Box my="1rem">
+                    <Title title={item.category} color="#30363c" />
+                  </Box>
                 </Box>
               </Box>
-            </Box>
+            </Link>
           );
         })}
       </Slider>
