@@ -28,7 +28,7 @@ const ViewProduct: React.FC<IProps> = ({ id }) => {
 
   const getViewProd = (id: string) => {
     axios
-      .get(`http://localhost:8080/product/${id}`)
+      .get(`${process.env.REACT_APP_URL}/product/${id}`)
       .then((res) => setOne(res.data))
       .catch((e) => console.log(e.message));
   };

@@ -12,7 +12,7 @@ const getProduct =
   (input: String) => (dispatch: Dispatch<ISearchProductAction>) => {
     dispatch({ type: SearchProductTypes.SEARCH_REQUEST });
     axios
-      .get(`http://localhost:8080/product?input=${input}&limit=${30}`)
+      .get(`${process.env.REACT_APP_URL}/product?input=${input}&limit=${30}`)
       .then((res) => {
         dispatch({
           type: SearchProductTypes.SEARCH_SUCCESS,

@@ -18,14 +18,20 @@ const db_1 = require("./config/db");
 const errorhandles_1 = require("./middleware/errorhandles");
 const user_route_1 = __importDefault(require("./features/Auth/user.route"));
 const product_route_1 = __importDefault(require("./features/product/product.route"));
+const cors_1 = __importDefault(require("cors"));
+const cart_route_1 = __importDefault(require("./features/cart/cart.route"));
+const trash_route_1 = __importDefault(require("./features/Trash/trash.route"));
 (0, dotenv_1.config)();
 const PORT = Number(process.env.PORT) || 8080;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(errorhandles_1.errorhandler);
+app.use((0, cors_1.default)());
 app.use("/user", user_route_1.default);
 app.use("/product", product_route_1.default);
+app.use("/cart", cart_route_1.default);
+app.use("/trash", trash_route_1.default);
 app.get("/", (req, res) => {
     try {
         res.send("Hello  from  TS  APP");

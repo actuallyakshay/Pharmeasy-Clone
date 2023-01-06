@@ -29,7 +29,7 @@ const Trash: React.FC = () => {
 
   const getTrash = () => {
     setLoad(true);
-    axios.get(`http://localhost:8080/trash`).then((res) => {
+    axios.get(`${process.env.REACT_APP_URL}/trash`).then((res) => {
       setLoad(false);
       setTrash(res.data);
     });

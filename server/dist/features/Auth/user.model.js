@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.User = exports.Gender = exports.Role = void 0;
 const mongoose_1 = require("mongoose");
 var Role;
 (function (Role) {
@@ -9,13 +9,13 @@ var Role;
     Role["Guest"] = "Guest";
     Role["ProductManager"] = "ProductManager";
     Role["Doctor"] = "Doctor";
-})(Role || (Role = {}));
+})(Role = exports.Role || (exports.Role = {}));
 var Gender;
 (function (Gender) {
     Gender["Male"] = "Male";
     Gender["Female"] = "Female";
     Gender["Others"] = "Others";
-})(Gender || (Gender = {}));
+})(Gender = exports.Gender || (exports.Gender = {}));
 const userSchema = new mongoose_1.Schema({
     name: { type: String },
     email: { type: String },
