@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
     <Box
       display={location.pathname.includes("admin") ? "none" : "flex"}
       bg="white"
+      flexDirection="column"
       position={"sticky"}
       w="100%"
       zIndex={50}
@@ -39,6 +40,7 @@ const Navbar: React.FC = () => {
         px=".5rem"
         justifyContent="space-between"
         alignContent="stretch"
+        // flexDirection="column"
       >
         <Flex>
           <Box>

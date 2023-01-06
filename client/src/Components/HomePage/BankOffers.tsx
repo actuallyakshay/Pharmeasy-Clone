@@ -17,7 +17,7 @@ const BankOffers: React.FC = () => {
       <Box mb="2rem">
         <ProductHeading heading="Payment Offers" />
       </Box>
-      <CommanCarousel data={data} slidesToShow={3} top="25%" />
+      <CommanCarousel data={data} slidesToShow={3} top="25%" autoplay={false} />
     </Box>
   );
 };

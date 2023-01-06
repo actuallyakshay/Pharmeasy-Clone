@@ -15,50 +15,50 @@ const data: IData[] = [
   {
     src: "https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0",
     title: "Medicine",
-    discount: "upto 20% OFF",
     link: "/product/medicine",
+    discount: "upto 20% OFF",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/labtest_ff.webp?dim=256x0",
     title: "Lab Tests",
+    link: "/product/labtest",
     discount: "upto 70% OFF",
-    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/healthcare_ff.webp?dim=256x0",
     title: "Healthcare",
-    discount: "upto 60% OFF",
     link: "/product/healthcare",
+    discount: "upto 60% OFF",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/offers_1_ff.webp?dim=256x0",
     title: "Sugeries",
+    link: "/product/healthcare",
     discount: "",
-    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/health_blogs_ff.webp?dim=256x0",
     title: "Health Blogs",
+    link: "/product/healthcare",
     discount: "",
-    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/plus_ff.webp?dim=256x0",
     title: "PLUS ",
+    link: "/product/healthcare",
     discount: "SAVE 5% EXTRA",
-    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/offers_ff.webp?dim=256x0",
     title: "Offers",
+    link: "/product/healthcare",
     discount: "",
-    link: "/medicine",
   },
   {
     src: "https://assets.pharmeasy.in/apothecary/images/value_store.png?dim=256x0",
     title: "Value Store",
+    link: "/product/healthcare",
     discount: "upto 20% OFF",
-    link: "/medicine",
   },
 ];
 
@@ -76,35 +76,36 @@ const category: React.FC = () => {
       >
         {data.map(({ src, title, discount, link }: IData) => {
           return (
-            <Flex
-              key={src}
-              flexDirection="column"
-              _hover={{
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-                borderRadius: "10px",
-              }}
-            >
-              <Box mx="1rem" borderBottom=".1px solid #d1d3d5">
-                <Link to={link}>
+            <Link to={link}>
+              <Flex
+                cursor="pointer"
+                key={src}
+                flexDirection="column"
+                _hover={{
+                  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                  borderRadius: "10px",
+                }}
+              >
+                <Box mx="1rem" borderBottom=".1px solid #d1d3d5">
                   <Image src={src} alt="" />
-                </Link>
-              </Box>
-              <Box mt="1rem">
-                <Title title={title} color="#30363c" />
-              </Box>
-              <Box mt=".5rem" pb=".3rem">
-                <Text
-                  fontSize="13px"
-                  fontFamily="poppins"
-                  fontWeight="600"
-                  color="#f47779"
-                  textAlign="center"
-                  textTransform="uppercase"
-                >
-                  {discount}
-                </Text>
-              </Box>
-            </Flex>
+                </Box>
+                <Box mt="1rem">
+                  <Title title={title} color="#30363c" />
+                </Box>
+                <Box mt=".5rem" pb=".3rem">
+                  <Text
+                    fontSize="13px"
+                    fontFamily="poppins"
+                    fontWeight="600"
+                    color="#f47779"
+                    textAlign="center"
+                    textTransform="uppercase"
+                  >
+                    {discount}
+                  </Text>
+                </Box>
+              </Flex>
+            </Link>
           );
         })}
       </Grid>
