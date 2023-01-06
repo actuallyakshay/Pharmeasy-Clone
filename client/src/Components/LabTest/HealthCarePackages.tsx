@@ -10,7 +10,9 @@ const HealthCarePackages = () => {
   const [test, setTest] = useState<IProduct[]>([]);
   const getTest = () => {
     axios
-      .get(`http://localhost:8080/product?category=healthPackages&limit=30`)
+      .get(
+        `${process.env.REACT_APP_URL}/product?category=healthPackages&limit=30`
+      )
       .then((res) => setTest(res.data))
       .catch((error) => console.log("Error", error));
   };
@@ -26,7 +28,7 @@ const HealthCarePackages = () => {
     >
       <Grid gridTemplateColumns="1fr .7fr" gap="4rem">
         <Box>
-          {test.map((item, index) => {
+          {test?.map((item, index) => {
             return <TestCard key={index} data={item} />;
           })}
         </Box>

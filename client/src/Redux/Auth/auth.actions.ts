@@ -24,4 +24,5 @@ export const adminLogout = () => (dispatch: Dispatch<IAuthAction>) => {
 
 export const getUserLogout = () => (dispatch: Dispatch<IAuthAction>) => {
   dispatch({ type: IAuthtypes.GET_USER_LOGOUT });
+  window.location.reload();
 };
