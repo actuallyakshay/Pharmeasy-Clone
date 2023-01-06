@@ -7,16 +7,16 @@ interface IProps {
   children: ReactElement;
 }
 
-const AdminPrivateRoute: React.FC<IProps> = ({ children }) => {
-  const adminAuth = useSelector(
-    (state: AppState) => state?.authReducer?.adminAuth
+const UserPrivateRoute: React.FC<IProps> = ({ children }) => {
+  const userAuth = useSelector(
+    (state: AppState) => state?.authReducer?.userAuth
   );
 
-  if (!adminAuth) {
-    return <Navigate to="/admin/login" />;
+  if (!userAuth) {
+    return <Navigate to="/" />;
   }
 
   return children;
 };
 
-export default AdminPrivateRoute;
+export default UserPrivateRoute;
