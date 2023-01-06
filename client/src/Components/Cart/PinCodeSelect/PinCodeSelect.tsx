@@ -82,7 +82,7 @@ const PinCodeSelect: React.FC = () => {
         color="teal"
         cursor={"pointer"}
       >
-        Select Pincode
+        ⚡ Delivery to
       </Text>
       <Drawer size={"sm"} isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
