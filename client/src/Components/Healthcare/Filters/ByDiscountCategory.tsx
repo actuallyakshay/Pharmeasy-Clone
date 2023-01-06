@@ -27,7 +27,8 @@ const ByDiscountCategory: React.FC<IProps> = ({ hanldeDiscountCategory }) => {
         w="fit-content"
       >
         <HStack>
-          <Text>Category</Text>
+          <Text display={{ base: "none", md: "flex" }}>Category</Text>
+          <Text display={{ base: "flex", md: "none" }}>%Cat</Text>
           <BiDownArrow />
         </HStack>
       </MenuButton>
