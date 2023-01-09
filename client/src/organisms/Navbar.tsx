@@ -43,17 +43,18 @@ const Navbar: React.FC = () => {
   window.addEventListener("scroll", changeNavbarBg);
 
   return (
-    <Box display={{ base: "none", lg: "block" }}>
+    <Box
+      display={{ base: "none", lg: "block" }}
+      position={"sticky"}
+      zIndex={50}
+      top="0%"
+      left={0}
+      right={0}
+    >
       <Box
         display={location.pathname.includes("admin") ? "none" : "flex"}
         bg="white"
         flexDirection="column"
-        position={"fixed"}
-        w="100%"
-        zIndex={50}
-        top="0%"
-        left={0}
-        right={0}
       >
         <Flex
           w="90%"
