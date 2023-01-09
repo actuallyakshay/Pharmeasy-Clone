@@ -1,4 +1,5 @@
 import { Box, ChakraProvider } from "@chakra-ui/react";
+import Temp from "./Components/Cart/CartItems/Temp";
 import Footer from "./organisms/Footer";
 import Navbar from "./organisms/Navbar";
 import NavbarForMobile from "./organisms/NavbarForMobile";
