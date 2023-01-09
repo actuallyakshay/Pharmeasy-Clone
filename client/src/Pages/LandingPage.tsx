@@ -16,7 +16,7 @@ const LandingPage: React.FC = () => {
   return (
     <Box>
       <Box
-        w="95%"
+        w={{ base: "100%", lg: "95%" }}
         m="auto"
         bg="radial-gradient(150px 150px at 95% 0%, rgba(253, 186, 43, 0.3) 0%, rgba(253, 186, 43, 0) 100%), radial-gradient(150px 150px at 5% 0%, rgba(120, 213, 242, 0.3) 0%, rgba(253, 186, 43, 0) 100%)"
       >

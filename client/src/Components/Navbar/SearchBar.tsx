@@ -58,7 +58,11 @@ const SearchBar: React.FC<IProps> = ({
 
   return (
     <Box pt={pt} w={w}>
-      <Flex direction="column" w={width} m="auto">
+      <Flex
+        direction="column"
+        w={{ base: "95%", md: "90%", lg: width }}
+        m="auto"
+      >
         <Flex
           mt={mt}
           borderRadius="30px"
