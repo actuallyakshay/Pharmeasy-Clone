@@ -18,7 +18,23 @@ import { IProduct } from "../../@types/IProduct";
 import { AppState } from "../../Redux/Store";
 import Product from "./Product";
 
-const SearchBar: React.FC = () => {
+interface IProps {
+  pt: string;
+  w: string;
+  width: string;
+  mt: string;
+  buttonSize: string;
+  inputSize: string;
+}
+
+const SearchBar: React.FC<IProps> = ({
+  pt,
+  w,
+  width,
+  mt,
+  buttonSize,
+  inputSize,
+}) => {
   const [input, setInput] = useState<string>("");
   const previousValue = useRef<string | null>(null);
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -40,23 +56,26 @@ const SearchBar: React.FC = () => {
     }
   }, [input]);
 
-
   return (
-    <Box pt="2.8rem" w="auto">
-      <Flex direction="column" w="60%" m="auto">
+    <Box pt={pt} w={w}>
+      <Flex
+        direction="column"
+        w={{ base: "95%", md: "90%", lg: width }}
+        m="auto"
+      >
         <Flex
-          mt="1.3rem"
+          mt={mt}
           borderRadius="30px"
           direction="column"
           position="relative"
         >
           <InputGroup
-            size="lg"
+            size={inputSize}
             boxShadow="rgb(0 0 0 / 8%) 0px 4px 7px"
             borderRadius="30px"
           >
             <InputLeftElement width="4.5rem" pr="2rem" pl="1rem">
-              <FiSearch color="#aaafb3" fontSize="" />
+              <FiSearch color="#aaafb3" />
             </InputLeftElement>
             <Input
               pr="4.5rem"
@@ -73,11 +92,12 @@ const SearchBar: React.FC = () => {
               <Button
                 bg="rgba(16, 132, 126, 1)"
                 color="white"
-                fontSize="17px"
-                fontWeight="600"
+                fontSize="16px"
+                fontWeight="500"
                 borderRadius="30px"
                 px="2.5rem"
                 mr="1.3rem"
+                size={buttonSize}
               >
                 Search
               </Button>

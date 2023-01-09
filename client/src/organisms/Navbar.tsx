@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  Button,
-  useDisclosure,
-  HStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Image, HStack } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
 import { IoMdCart } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
@@ -16,6 +8,24 @@ import NavbarItems from "../Components/Navbar/NavbarItems";
 import React, { useState } from "react";
 import Login from "../Components/Login/Login";
 import PinCodeSelect from "../Components/Cart/PinCodeSelect/PinCodeSelect";
+import SearchBar from "../Components/Navbar/SearchBar";
+
+interface IData {
+  link: string;
+  url: string;
+  title: string;
+}
+
+const data: IData[] = [
+  { link: "/product/medicine", url: "", title: "Medicine" },
+  { link: "/product/labtest", url: "", title: "Lab Tests" },
+  { link: "/product/healthcare", url: "", title: "Healthcare" },
+  { link: "", url: "", title: "Surgeries" },
+  { link: "", url: "", title: "Health Blogs" },
+  { link: "", url: "", title: "PLUS" },
+  { link: "", url: "", title: "Offers" },
+  { link: "", url: "", title: "Value Store" },
+];
 
 const Navbar: React.FC = () => {
   const [navbar, setNavbar] = useState(false);
@@ -23,7 +33,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   const changeNavbarBg = () => {
-    if (window.scrollY >= 1) {
+    if (window.scrollY >= 30) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -33,15 +43,17 @@ const Navbar: React.FC = () => {
   window.addEventListener("scroll", changeNavbarBg);
 
   return (
-    <>
+    <Box display={{ base: "none", lg: "block" }}>
       <Box
         display={location.pathname.includes("admin") ? "none" : "flex"}
         bg="white"
         flexDirection="column"
-        position={"sticky"}
+        position={"fixed"}
         w="100%"
         zIndex={50}
         top="0%"
+        left={0}
+        right={0}
       >
         <Flex
           w="90%"
@@ -49,8 +61,7 @@ const Navbar: React.FC = () => {
           pt=".7rem"
           px=".5rem"
           justifyContent="space-between"
-          alignContent="stretch"
-          // flexDirection="column"
+          gap="1rem"
         >
           <Flex>
             <Box>
@@ -70,7 +81,16 @@ const Navbar: React.FC = () => {
               <PinCodeSelect />
             </HStack>
           </Flex>
-
+          <Box w="45%" display={navbar ? "flex" : "none"}>
+            <SearchBar
+              pt="0px"
+              w="100%"
+              width="100%"
+              mt="0px"
+              inputSize="md"
+              buttonSize="sm"
+            />
+          </Box>
           <Flex align="center" gap="2rem">
             <Flex align="center" cursor="pointer">
               <BsPerson fontWeight="600" fontSize="21px" />
@@ -97,7 +117,7 @@ const Navbar: React.FC = () => {
         <NavbarItems />
         <NavbarBorderBottom />
       </Box>
-    </>
+    </Box>
   );
 };
 
