@@ -10,9 +10,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
 
 export const MedicineComponent: React.FC<IProduct> = ({

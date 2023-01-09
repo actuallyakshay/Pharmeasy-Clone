@@ -77,11 +77,6 @@ const NavbarForMobile = () => {
       display={{ base: "flex", lg: "none" }}
       padding="1.5rem"
       justify="space-between"
-      // position={"sticky"}
-      // top={0}
-      // left={0}
-      // right={0}
-      // zIndex={33}
     >
       <HStack gap=".5rem">
         <Box onClick={onOpen}>
@@ -130,10 +125,10 @@ const NavbarForMobile = () => {
               {data.map(({ title, link, icon }) => {
                 return (
                   <HStack
+                    onClick={() => onClose()}
                     mb="2rem"
                     w="full"
                     justify="space-between"
-                    // onClose={onClose}
                   >
                     <Flex gap="1.5rem">
                       <Box>{icon}</Box>
