@@ -45,6 +45,8 @@ export const Medicine: React.FC = () => {
         justifyContent={"space-evenly"}
         mt="3"
         shadow={"md"}
+        flexWrap="wrap"
+        gap={["5px", "0px"]}
       >
         {arr?.map((el: string, i: number) => {
           return (
