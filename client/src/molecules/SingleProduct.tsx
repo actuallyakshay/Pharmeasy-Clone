@@ -4,6 +4,7 @@ import NavbarBorderBottom from "./NavbarBorderBottom";
 import { IProduct } from "../@types/IProduct";
 import { BiRupee } from "react-icons/bi";
 import Ratings from "./Ratings";
+import Temp from "../Components/Cart/CartItems/Temp";
 
 interface IProps {
   product: IProduct;
@@ -124,10 +125,7 @@ const SingleProduct: React.FC<IProps> = ({ product }) => {
             fontFamily="poppins"
             mb=".5rem"
           >
-            Delivery By{" "}
-            <span
-              style={{ color: "#4f585e", fontWeight: "600" }}
-            >{`${date}  ${currentMonth}  - ${futureDate}  ${currentMonth}`}</span>
+            Delivery By <Temp />
           </Text>
         </Flex>
 

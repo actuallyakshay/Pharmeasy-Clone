@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -17,6 +17,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { getCartData } from "../../../Redux/Cart/cart.action";
+import Temp from "./Temp";
 
 const month: string[] = [
   "February",
@@ -51,6 +52,7 @@ var token: string =
 
 const CartSingleProduct: React.FC<IProps> = ({ data }) => {
   const dispatch: Dispatch<any> = useDispatch();
+
   const hanldeDeleteInCart = (id: string) => {
     axios
       .delete(`${process.env.REACT_APP_URL}/cart/${id}`, {
@@ -155,9 +157,9 @@ const CartSingleProduct: React.FC<IProps> = ({ data }) => {
             fontFamily="poppins"
           >
             ⚡ Delivery By{" "}
-            <span
-              style={{ color: "#4f585e", fontWeight: "500" }}
-            >{`${date}  ${currentMonth}  - ${futureDate}  ${currentMonth}`}</span>
+            <span style={{ color: "#4f585e", fontWeight: "500" }}>
+              <Temp />
+            </span>
           </Text>
         </VStack>
       </Box>
