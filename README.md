@@ -1,4 +1,4 @@
-<a href="https://pharmeasy-rho.vercel.app/"><img src="https://assets.pharmeasy.in/apothecary/images/logo_small.svg?dim=128x0"" alt="Indeed-logo-svg" border="0" width='300px' /></a>
+<a href="https://pharmeasy-rho.vercel.app/"><img src="https://assets.pharmeasy.in/apothecary/images/logo_small.svg?dim=128x0" alt="Indeed-logo-svg" border="0" width='300px' /></a>
 
 ### Hello World ! Welcome to Pharmeasy.com (A Full Stack Project)
 
