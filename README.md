@@ -15,6 +15,7 @@ Pharmeasy vercel link : https://pharmeasy-rho.vercel.app/
 - handled whole backend with all the functionalities filter,sorting,searching, relationships in cart, trash items, role based access control system with Authentication (login/signup with jwt and bcrypt) and many more
 - Pages in frontend (login/Signup, Medicine, healthcare, Cart) with all the functionalities
 - Whole Admin Control Panel
+- Created own npm package and used it in this project
 
 ### Manoj Rathod:- https://github.com/ManojRathod571
 ##### Role and Responsibilities (Manoj Rathod)
@@ -37,11 +38,11 @@ Pharmeasy vercel link : https://pharmeasy-rho.vercel.app/
 
 ## Single Product page
 
-![App Screenshot](https://user-images.githubusercontent.com/107462720/211258964-3efbe8f3-f23f-42e8-a169-1be5aa23e7e4.png)
+![App Screenshot](https://user-images.githubusercontent.com/107462720/211297038-c4ad9ea8-3825-4c9d-9bcf-e9060cd8934e.png)
 
 ## Cart Page
 
-![App Screenshot](https://user-images.githubusercontent.com/107462720/211259047-c774524d-bc0f-476a-aac3-f2aacc4a1625.png)
+![App Screenshot](https://user-images.githubusercontent.com/107462720/211297160-b7b64c63-32ab-4f5d-a203-9c7dc0d8977e.png)
 
 ## Admin's Page
 
