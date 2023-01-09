@@ -26,7 +26,7 @@ import { ImLab } from "react-icons/im";
 import { BsPerson } from "react-icons/bs";
 import { FiChevronRight } from "react-icons/fi";
 import { RiMentalHealthFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Login from "../Components/Login/Login";
 import Items from "../molecules/Items";
@@ -70,6 +70,7 @@ const data: IData[] = [
 
 const NavbarForMobile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   // const btnRef = useRef();
 
   return (
@@ -100,7 +101,11 @@ const NavbarForMobile = () => {
           w="1.1rem"
           h="1.1rem"
         />
-        <IoMdCart fontWeight="600" fontSize="22px" />
+        <IoMdCart
+          onClick={() => navigate("/cart")}
+          fontWeight="600"
+          fontSize="22px"
+        />
       </HStack>
 
       {/* drawer */}
