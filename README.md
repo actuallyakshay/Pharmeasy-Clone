@@ -8,7 +8,7 @@
 
 Pharmeasy vercel link : https://pharmeasy-rho.vercel.app/
 
-## Contributors
+## Contributors (2 Member)
 
 ### Akshay Rajput:- https://github.com/actuallyakshay
 ##### Role and Responsibilities (Akshay Rajput)
