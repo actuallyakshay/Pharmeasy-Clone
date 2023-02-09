@@ -8,12 +8,10 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Dispatch } from "redux";
 import { IProduct } from "../../@types/IProduct";
-import { addDataInCart } from "../../Redux/Cart/cart.action";
 
 export const MedicineComponent: React.FC<IProduct> = ({
   _id,
@@ -24,7 +22,6 @@ export const MedicineComponent: React.FC<IProduct> = ({
   price1,
   tablet,
 }) => {
-  const dispatch: Dispatch<any> = useDispatch();
   const toast = useToast();
   const navigate: NavigateFunction = useNavigate();
 
@@ -33,14 +30,43 @@ export const MedicineComponent: React.FC<IProduct> = ({
       product: id,
       quantity: 1,
     };
-    dispatch(addDataInCart(body));
-    toast({
-      title: "Product Added Successfully",
-      status: "success",
-      position: "top",
-      duration: 2000,
-      isClosable: true,
-    });
+    let token: string | null = localStorage.getItem("token");
+
+    if (token == null || undefined) {
+      toast({
+        title: "Please login first",
+        status: "error",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+    axios
+      .post(`${process.env.REACT_APP_URL}/cart`, body, {
+        headers: {
+          token: token,
+        },
+      })
+      .then((res) => {
+        if (res.data == "Type is missing") {
+          toast({
+            title: "This Product already present in the cart",
+            status: "warning",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Product Added Successfully",
+            status: "success",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        }
+      });
   };
 
   return (

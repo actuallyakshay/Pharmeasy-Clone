@@ -44,17 +44,28 @@ const Navbar: React.FC = () => {
 
   return (
     <Box
+<<<<<<< HEAD
       display={{ base: "none", lg: "block" }}
       position={"sticky"}
       zIndex={50}
       top="0%"
       left={0}
       right={0}
+=======
+      position={"sticky"}
+      top="0%"
+      display={{ base: "none", lg: "block" }}
+      zIndex={50}
+>>>>>>> cbd33d38b09c602a5e94b5a7fe3828da01820730
     >
       <Box
         display={location.pathname.includes("admin") ? "none" : "flex"}
         bg="white"
         flexDirection="column"
+<<<<<<< HEAD
+=======
+        w="100%"
+>>>>>>> cbd33d38b09c602a5e94b5a7fe3828da01820730
       >
         <Flex
           w="90%"
