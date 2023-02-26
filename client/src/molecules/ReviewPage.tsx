@@ -63,7 +63,7 @@ const ReviewPage: React.FC<IProps> = ({ id }) => {
       title: review,
     };
     axios
-      .patch(`http://localhost:8080/product/${id}`, body)
+      .patch(`${process.env.REACT_APP_URL}/product/${id}`, body)
       .then((res) => {
         getReviews();
         setReview("");
@@ -75,7 +75,7 @@ const ReviewPage: React.FC<IProps> = ({ id }) => {
 
   const getReviews = () => {
     axios
-      .get(`http://localhost:8080/product/${id}`)
+      .get(`${process.env.REACT_APP_URL}/product/${id}`)
       .then((res) => {
         setCollectReviews(res.data.reviews);
       })
